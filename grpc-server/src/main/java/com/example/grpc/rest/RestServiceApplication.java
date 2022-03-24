@@ -1,4 +1,4 @@
-package com.CW-DS.rest;
+package com.examle.grpc.rest;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
