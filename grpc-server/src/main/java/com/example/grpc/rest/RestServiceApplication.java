@@ -4,8 +4,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication
-public class RestServiceApplication extends SpringBootServletInitializer{
+public class RestServiceApplication {
     public static void main(String[] args) {
         SpringApplication.run(RestServiceApplication.class, args);
     }
 }
+// extends SpringBootServletInitializer
