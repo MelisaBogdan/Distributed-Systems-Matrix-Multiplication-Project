@@ -14,12 +14,12 @@ public class GrpcServerApplication extends SpringBootServletInitializer {
 	public static void main(String[] args) {
 		SpringApplication.run(GrpcServerApplication.class, args);
 
-//		Server server = ServerBuilder
-//				.forPort(8080)
-//				.addService(new HelloServiceImpl()).build();
-//
-//		server.start();
-//		server.awaitTermination();
+// 		Server server = ServerBuilder
+// 				.forPort(8080)
+// 				.addService(new HelloServiceImpl()).build();
+
+// 		server.start();
+// 		server.awaitTermination();
 	}
 
 }
