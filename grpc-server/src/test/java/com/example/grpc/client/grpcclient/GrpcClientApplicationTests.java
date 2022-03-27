@@ -1,4 +1,4 @@
-package com.example.grpc.server.grpcserver;
+package com.example.grpc.client.grpcclient;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class GrpcServerApplicationTests {
+public class GrpcClientApplicationTests {
 
 	@Test
 	public void contextLoads() {
