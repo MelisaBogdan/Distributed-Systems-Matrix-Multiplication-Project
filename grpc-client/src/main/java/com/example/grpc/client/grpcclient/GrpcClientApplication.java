@@ -1,4 +1,4 @@
-/*package com.example.grpc.client.grpcclient;
+/* package com.example.grpc.client.grpcclient;
 
 import com.example.grpc.server.grpcserver.HelloRequest;
 import com.example.grpc.server.grpcserver.HelloResponse;
@@ -59,8 +59,8 @@ public class GrpcClientApplication extends SpringBootServletInitializer {
 
 		channel.shutdown();*/
 //		SpringApplication.run(GrpcClientApplication.class, args);
-	}
-/*
+/*	}
+
 	@Bean
 	CommandLineRunner init(StorageService storageService) {
 		return (args) -> {
