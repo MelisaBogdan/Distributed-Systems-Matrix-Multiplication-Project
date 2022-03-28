@@ -60,7 +60,7 @@ public class GrpcClientApplication extends SpringBootServletInitializer {
 		channel.shutdown();*/
 //		SpringApplication.run(GrpcClientApplication.class, args);
 	}
-	
+/*	
 	@Bean
 	CommandLineRunner init(StorageService storageService) {
 		return (args) -> {
