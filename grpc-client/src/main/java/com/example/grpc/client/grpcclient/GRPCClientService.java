@@ -45,8 +45,8 @@ public class GRPCClientService {
 		return resp;
     }
 	
-    public FileUploadResponse fileUpload(@RequestParam("file") MultipartFile file,@RequestParam("deadline") int deadline){
-	    return 0;
-    }
+//     public FileUploadResponse fileUpload(@RequestParam("file") MultipartFile file,@RequestParam("deadline") int deadline){
+// 	    return 0;
+//     }
                 
 }
