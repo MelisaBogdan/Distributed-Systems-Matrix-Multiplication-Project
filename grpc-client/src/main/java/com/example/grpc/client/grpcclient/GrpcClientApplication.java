@@ -1,4 +1,4 @@
-/*package com.example.grpc.client.grpcclient;
+/* package com.example.grpc.client.grpcclient;
 
 import com.example.grpc.server.grpcserver.HelloRequest;
 import com.example.grpc.server.grpcserver.HelloResponse;
