@@ -29,6 +29,15 @@ import com.example.grpc.client.model.FileUploadResponse;
 
 @Service
 public class GRPCClientService {
+
+	private String fileName;
+        private String uploadFilePath;
+        private String contentType;
+        private File dest;
+
+        @Value("${matrix.symbols}")
+        private String matrixSymbols;
+
     public String ping() {
         	ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 9090)
                 .usePlaintext()
