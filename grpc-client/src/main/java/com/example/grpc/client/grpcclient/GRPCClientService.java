@@ -11,6 +11,22 @@ import io.grpc.ManagedChannelBuilder;
 import net.devh.boot.grpc.client.inject.GrpcClient;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Service;
+// just added
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.*;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.File; 
+import java.io.IOException;
+import java.util.*;
+import java.util.ArrayList;
+import java.text.DecimalFormat;
+import java.util.Random;
+
+import com.example.grpc.client.model.FileUploadResponse;
+
 @Service
 public class GRPCClientService {
     public String ping() {
