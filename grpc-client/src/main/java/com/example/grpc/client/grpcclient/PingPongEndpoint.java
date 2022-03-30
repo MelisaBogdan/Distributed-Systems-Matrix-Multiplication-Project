@@ -31,6 +31,6 @@ public class PingPongEndpoint {
 	
 	@GetMapping("/upload")
 	public String upload() {
-		return "index.html.html";
+		return grpcClientService.upload();
 	}
 }
