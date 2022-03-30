@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.text.DecimalFormat;
 import java.util.Random;
 
-import com.example.grpc.client.model.FileUploadResponse;
+// import com.example.grpc.client.model.FileUploadResponse;
 
 @Service
 public class GRPCClientService {
