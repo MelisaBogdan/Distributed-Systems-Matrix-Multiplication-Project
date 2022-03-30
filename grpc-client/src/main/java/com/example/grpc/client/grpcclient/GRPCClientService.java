@@ -11,33 +11,8 @@ import io.grpc.ManagedChannelBuilder;
 import net.devh.boot.grpc.client.inject.GrpcClient;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Service;
-// just added
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.*;
-
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.File; 
-import java.io.IOException;
-import java.util.*;
-import java.util.ArrayList;
-import java.text.DecimalFormat;
-import java.util.Random;
-
-// import com.example.grpc.client.model.FileUploadResponse;
-
 @Service
 public class GRPCClientService {
-
-	private String fileName;
-        private String uploadFilePath;
-        private String contentType;
-        private File dest;
-
-        @Value("${matrix.symbols}")
-        private String matrixSymbols;
-
     public String ping() {
         	ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 9090)
                 .usePlaintext()
@@ -70,59 +45,7 @@ public class GRPCClientService {
 		return resp;
     }
     public String upload(){
-	    /*ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 9090)
-                .usePlaintext()
-                .build();        
-		PingPongServiceGrpc.PingPongServiceBlockingStub stub
-                = PingPongServiceGrpc.newBlockingStub(channel);        
-		PongResponse helloResponse = stub.ping(PingRequest.newBuilder()
-                .setPing("")
-                .build());        
-		channel.shutdown();        
-		return helloResponse.getPong(); */
+	    pass;
     }
-	
-	
-	/*public FileUploadResponse fileUpload(@RequestParam("file") MultipartFile file){
-                
-		fileName = file.getOriginalFilename(); // get file name 
-		String filePathServer = "/home/melisa_bogdan2/CW-DS/files"; // use to save file for server development 
-
-
-		uploadFilePath = filePathServer;
-
-		contentType = file.getContentType();
-		dest = new File(uploadFilePath + '/' + fileName);
-
-		if (!dest.getParentFile().exists())  dest.getParentFile().mkdirs(); // make directory if doesn't exist
-			
-
-		try { file.transferTo(dest); }
-		catch (Exception e) { return new FileUploadResponse(fileName, contentType, "File is not provided, please add a file!!! " + e.getMessage()); }
-
-		// Get both matrices from a single file 
-		String matrixA_temp = txt2String(dest).split(matrixSymbols)[0];
-		String matrixB_temp = txt2String(dest).split(matrixSymbols)[1];
-
-		// Convert each string matrix to int[][]] matrix
-		int[][] matrixA = convertToMatrix(matrixA_temp);
-		int[][] matrixB = convertToMatrix(matrixB_temp);
-
-		// If not square matrix
-		if(matrixA.length != matrixA[0].length || matrixB.length != matrixB[0].length){
-				String data  = "Matrix A: " + matrixA.length  + "x" + matrixA[0].length;
-					   data += "  Matrix B: " + matrixB.length  + "x" + matrixB[0].length;
-				return new FileUploadResponse(fileName, contentType, "Rows and Columns of the Matrices should be equal size!!! " + data);
-		}
-		// If not even number rows and col
-		if(matrixA.length % 4 !=0 || matrixB.length % 4 !=0 ){
-				String data  = "Matrix A: " + matrixA.length  + "x" + matrixA[0].length;
-					   data += "  Matrix B: " + matrixB.length  + "x" + matrixB[0].length;
-				return new FileUploadResponse(fileName, contentType, "Accepted Matrices: nxn where n%4=0!!! " + data);
-		}
-		grpcClient(matrixA, matrixB);
-		return new FileUploadResponse(fileName, contentType, "File Successfully Uploaded");
-	} */
-
 
 }
