@@ -70,7 +70,7 @@ public class GRPCClientService {
 		return resp;
     }
 
-	public FileUploadResponse fileUpload(@RequestParam("file") MultipartFile file){
+	/*public FileUploadResponse fileUpload(@RequestParam("file") MultipartFile file){
                 
 		fileName = file.getOriginalFilename(); // get file name 
 		String filePathServer = "/home/melisa_bogdan2/CW-DS/files"; // use to save file for server development 
@@ -109,7 +109,7 @@ public class GRPCClientService {
 		}
 		grpcClient(matrixA, matrixB);
 		return new FileUploadResponse(fileName, contentType, "File Successfully Uploaded");
-	}
+	} */
 
 
 }
