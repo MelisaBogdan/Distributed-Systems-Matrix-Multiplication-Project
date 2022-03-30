@@ -69,7 +69,20 @@ public class GRPCClientService {
 		String resp= A.getC00()+" "+A.getC01()+"<br>"+A.getC10()+" "+A.getC11()+"\n";
 		return resp;
     }
-
+    public String upload(){
+	    ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 9090)
+                .usePlaintext()
+                .build();        
+		PingPongServiceGrpc.PingPongServiceBlockingStub stub
+                = PingPongServiceGrpc.newBlockingStub(channel);        
+		PongResponse helloResponse = stub.ping(PingRequest.newBuilder()
+                .setPing("")
+                .build());        
+		channel.shutdown();        
+		return helloResponse.getPong();
+    }
+	
+	
 	/*public FileUploadResponse fileUpload(@RequestParam("file") MultipartFile file){
                 
 		fileName = file.getOriginalFilename(); // get file name 
