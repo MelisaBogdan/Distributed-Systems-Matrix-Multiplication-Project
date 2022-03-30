@@ -29,8 +29,8 @@ public class PingPongEndpoint {
 		return grpcClientService.add();
 	}
 	
-	@GetMapping("/upload")
+	/*@GetMapping("/upload")
 	public String upload() {
 		return grpcClientService.upload();
-	}
+	}*/
 }
