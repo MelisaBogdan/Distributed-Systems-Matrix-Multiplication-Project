@@ -16,8 +16,11 @@
 
 	<div>
 		<ul>
-			<li th:each="file : ${files}">
-				<a th:href="${file}" th:text="${file}" />
+			<li th:each="matrixA : ${files}">
+				<a th:href="${matrixA}" th:text="${matrixA}" />
+			</li>
+			<li th:each="matrixB : ${files}">
+				<a th:href="${matrixB}" th:text="${matrixB}" />
 			</li>
 		</ul>
 	</div>
