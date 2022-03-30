@@ -70,7 +70,7 @@ public class GRPCClientService {
 		return resp;
     }
     public String upload(){
-	    ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 9090)
+	    /*ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 9090)
                 .usePlaintext()
                 .build();        
 		PingPongServiceGrpc.PingPongServiceBlockingStub stub
@@ -79,7 +79,7 @@ public class GRPCClientService {
                 .setPing("")
                 .build());        
 		channel.shutdown();        
-		return helloResponse.getPong();
+		return helloResponse.getPong(); */
     }
 	
 	
