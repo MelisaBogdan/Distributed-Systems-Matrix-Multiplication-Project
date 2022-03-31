@@ -24,15 +24,15 @@ public class PingPongEndpoint {
     	public PingPongEndpoint(GRPCClientService grpcClientService) {
         	this.grpcClientService = grpcClientService;
     	}    
-	@GetMapping("/ping")
-    	public String ping() {
-        	return grpcClientService.ping();
-    	}
-        @GetMapping("/add")
-	public String add() {
-		return grpcClientService.add();
-	}
-	@GetMapping("/")
+// 	@GetMapping("/ping")
+//     	public String ping() {
+//         	return grpcClientService.ping();
+//     	}
+//         @GetMapping("/add")
+// 	public String add() {
+// 		return grpcClientService.add();
+// 	}
+	@GetMapping("/upload")
 	public String upload(Model model) {
         return "upload";
 	}
