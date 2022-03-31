@@ -30,6 +30,6 @@ public class PingPongEndpoint {
 	}
 	@GetMapping("/")
 	public String upload(Model model) {
-        return "index.html";
+        return "upload";
 	}
 }
