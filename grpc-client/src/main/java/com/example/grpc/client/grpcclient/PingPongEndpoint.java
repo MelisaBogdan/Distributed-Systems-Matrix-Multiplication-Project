@@ -1,5 +1,6 @@
 package com.example.grpc.client.grpcclient;
 
+
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import org.springframework.boot.SpringApplication;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.ui.Model;
 import java.io.IOException;
 
 @Controller
