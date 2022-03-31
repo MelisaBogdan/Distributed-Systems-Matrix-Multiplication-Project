@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
 
-@RestController
+@Controller
 public class PingPongEndpoint {    
 
 	GRPCClientService grpcClientService;    
@@ -27,5 +27,9 @@ public class PingPongEndpoint {
         @GetMapping("/add")
 	public String add() {
 		return grpcClientService.add();
+	}
+	@GetMapping("/")
+	public String upload(Model model) {
+        return "index.html";
 	}
 }
