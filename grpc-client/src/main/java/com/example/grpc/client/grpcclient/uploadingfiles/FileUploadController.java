@@ -64,7 +64,7 @@ public class FileUploadController {
 	}
 
 	@PostMapping("/")
-	public String handleFileUpload(@RequestParam("file") MultipartFile file,
+	public String handleFileUpload(@RequestParam("file") File file,
 			RedirectAttributes redirectAttributes) {
 
 		storageService.store(file);
