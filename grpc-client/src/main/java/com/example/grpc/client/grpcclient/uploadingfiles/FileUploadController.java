@@ -22,7 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.example.uploadingfiles.storage.StorageFileNotFoundException;
 import com.example.uploadingfiles.storage.StorageService;
 
-//
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.File; 
@@ -31,13 +31,12 @@ import java.util.*;
 import java.util.ArrayList;
 import java.text.DecimalFormat;
 import java.util.Random;
-//
+
 
 @Controller
 public class FileUploadController {
 
 	private final StorageService storageService;
-	private MultipartFile new_file;
 
 	@Autowired
 	public FileUploadController(StorageService storageService) {
@@ -69,28 +68,6 @@ public class FileUploadController {
 			RedirectAttributes redirectAttributes) {
 
 		storageService.store(file);
-		if (file.isEmpty()) {
-             		redirectAttributes.addFlashAttribute("message",
-				"EMPTY BISH" + file.getOriginalFilename() + "!");
-                
-            	}
-		
-// 		new_file=new MultipartFile(file);
-
-// 		String matrixA_temp = txt2String(new_file);
-		
-		
-// 		int[][] matrixA = convertToMatrix(matrixA_temp);
-		
-// 		if(matrixA.length != matrixA[0].length){
-//                         String data  = "Matrix A: " + matrixA.length  + "x" + matrixA[0].length;
-// //                                data += "  Matrix B: " + matrixB.length  + "x" + matrixB[0].length;
-// //                         return new FileUploadResponse(file.getOriginalFilename(), contentType, "Rows and Columns of the Matrices should be equal size!!! " + data);
-//                 	redirectAttributes.addFlashAttribute("message",
-// 				"Rows and Columns of the Matrices should be equal size!!! " + file.getOriginalFilename() + "!");
-// 		}
-
-	
 		redirectAttributes.addFlashAttribute("message",
 				"You successfully uploaded " + file.getOriginalFilename() + "!");
 
@@ -102,43 +79,43 @@ public class FileUploadController {
 		return ResponseEntity.notFound().build();
 	}
 	
-	// Get matrix string from the file
-        public static String txt2String(File file) {
-                StringBuilder result = new StringBuilder();
-                try {
-                    BufferedReader br = new BufferedReader(new FileReader(file));
-                    String s = null;
-                    while ((s = br.readLine()) != null) {
-                        result.append(System.lineSeparator() + s);
-                    }
-                    br.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                return result.toString();
-        }
+// 	// Get matrix string from the file
+//         public static String txt2String(File file) {
+//                 StringBuilder result = new StringBuilder();
+//                 try {
+//                     BufferedReader br = new BufferedReader(new FileReader(file));
+//                     String s = null;
+//                     while ((s = br.readLine()) != null) {
+//                         result.append(System.lineSeparator() + s);
+//                     }
+//                     br.close();
+//                 } catch (Exception e) {
+//                     e.printStackTrace();
+//                 }
+//                 return result.toString();
+//         }
 	
-	 public static int[][] convertToMatrix(String m){
+// 	 public static int[][] convertToMatrix(String m){
 
-                // split matrices row and col number from actual matrix data
-                String[] data = m.split(";"); // get matrix data 
-                String row_col[] = data[0].split(","); // get matrix row and cl 
-                // Get row and col number into int var. 
-                int row = Integer.parseInt(row_col[0].replaceAll("[\\n\\t ]", ""));
-                int col = Integer.parseInt(row_col[1].replaceAll("[\\n\\t ]", ""));
+//                 // split matrices row and col number from actual matrix data
+//                 String[] data = m.split(";"); // get matrix data 
+//                 String row_col[] = data[0].split(","); // get matrix row and cl 
+//                 // Get row and col number into int var. 
+//                 int row = Integer.parseInt(row_col[0].replaceAll("[\\n\\t ]", ""));
+//                 int col = Integer.parseInt(row_col[1].replaceAll("[\\n\\t ]", ""));
 
-                String[] matrixData_temp = data[1].split(" "); // get the matrix data into string array 
+//                 String[] matrixData_temp = data[1].split(" "); // get the matrix data into string array 
                
-                int[][] matrix = new int[row][col];
-                int temp_matrix_index = 0; 
+//                 int[][] matrix = new int[row][col];
+//                 int temp_matrix_index = 0; 
                  
-                for(int i = 0; i < row; i++){
-                        for(int j = 0; j < col; j++){
-                                matrix[i][j] = Integer.parseInt(matrixData_temp[temp_matrix_index].replaceAll("[\\n\\t ]", ""));
-                                temp_matrix_index++;
-                        }
-                }
-                return matrix;
-        }
+//                 for(int i = 0; i < row; i++){
+//                         for(int j = 0; j < col; j++){
+//                                 matrix[i][j] = Integer.parseInt(matrixData_temp[temp_matrix_index].replaceAll("[\\n\\t ]", ""));
+//                                 temp_matrix_index++;
+//                         }
+//                 }
+//                 return matrix;
+//         }
 
 }
