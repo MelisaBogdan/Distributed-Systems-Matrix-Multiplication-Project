@@ -23,6 +23,7 @@ import com.example.uploadingfiles.storage.StorageFileNotFoundException;
 import com.example.uploadingfiles.storage.StorageService;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Value;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.File; 
@@ -137,8 +138,8 @@ public class FileUploadController {
                 }
                 return matrix;
         }
-	@Bean 
-	public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
-		return new PropertySourcesPlaceholderConfigurer();
-	}
+// 	@Bean 
+// 	public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
+// 		return new PropertySourcesPlaceholderConfigurer();
+// 	}
 }
