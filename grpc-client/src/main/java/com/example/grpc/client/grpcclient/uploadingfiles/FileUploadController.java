@@ -84,7 +84,7 @@ public class FileUploadController {
 			redirectAttributes.addFlashAttribute("message",
 					"File is not provided, pls add a file!! " + file.getOriginalFilename() + "!!");
 		
-		
+		}
 // 		CHECK IF FILE EMPTY
 		if (file.isEmpty()) {
             		 redirectAttributes.addFlashAttribute("message",
