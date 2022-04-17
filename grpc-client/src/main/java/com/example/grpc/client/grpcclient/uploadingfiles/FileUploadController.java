@@ -68,7 +68,7 @@ public class FileUploadController {
 			RedirectAttributes redirectAttributes) {
 
 		storageService.store(file);
-		new_file=new File(file)
+		new_file=new File(file);
 
 		String matrixA_temp = txt2String(new_file);
 		
