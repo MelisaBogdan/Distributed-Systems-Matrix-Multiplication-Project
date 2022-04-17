@@ -73,10 +73,12 @@ public class FileUploadController {
 		
 		if (file.isEmpty()) {
             		 redirectAttributes.addFlashAttribute("message",
-				"EMPTY BISH " + file.getOriginalFilename() + "!");
+				"File " + file.getOriginalFilename() + " is empty! Upload again. ");
                 
            	}else {
 			storageService.store(file);
+			String matrixA_temp = txt2String(file);
+				
 			redirectAttributes.addFlashAttribute("message",
 					"You successfully TEST uploaded " + file.getOriginalFilename() + "!");
 		}
