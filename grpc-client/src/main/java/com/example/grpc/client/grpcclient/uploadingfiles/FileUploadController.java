@@ -117,7 +117,7 @@ public class FileUploadController {
 //                 return result.toString();
 		ArrayList<String> result = new ArrayList<>();
 
-		try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
+		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
    			 while (br.ready()) {
         			result.add(br.readLine());
     			}
