@@ -71,7 +71,8 @@ public class FileUploadController {
 
 		storageService.store(file);
 		
-		if (file.isEmpty()) {
+// 		if (file.isEmpty()) {
+		if (file == null) {
             		 redirectAttributes.addFlashAttribute("message",
 				"EMPTY BISH " + file.getOriginalFilename() + "!");
                 
