@@ -69,7 +69,12 @@ public class FileUploadController {
 			RedirectAttributes redirectAttributes) {
 
 		storageService.store(file);
-		new_file=new MultipartFile(file);
+		if (file.isEmpty()) {
+             		new FileUploadResponse(file.getOriginalFilename(), "EMPTY BISH!");
+                
+            	}
+		
+// 		new_file=new MultipartFile(file);
 
 // 		String matrixA_temp = txt2String(new_file);
 		
@@ -79,7 +84,7 @@ public class FileUploadController {
 // 		if(matrixA.length != matrixA[0].length){
 //                         String data  = "Matrix A: " + matrixA.length  + "x" + matrixA[0].length;
 // //                                data += "  Matrix B: " + matrixB.length  + "x" + matrixB[0].length;
-// //                         return new FileUploadResponse(fileName, contentType, "Rows and Columns of the Matrices should be equal size!!! " + data);
+// //                         return new FileUploadResponse(file.getOriginalFilename(), contentType, "Rows and Columns of the Matrices should be equal size!!! " + data);
 //                 	redirectAttributes.addFlashAttribute("message",
 // 				"Rows and Columns of the Matrices should be equal size!!! " + file.getOriginalFilename() + "!");
 // 		}
