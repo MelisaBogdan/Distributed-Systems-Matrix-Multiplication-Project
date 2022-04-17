@@ -22,7 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.example.uploadingfiles.storage.StorageFileNotFoundException;
 import com.example.uploadingfiles.storage.StorageService;
 
-
+import org.springframework.context.annotation.Bean;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.File; 
