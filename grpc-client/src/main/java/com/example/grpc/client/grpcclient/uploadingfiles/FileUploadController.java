@@ -23,7 +23,8 @@ import com.example.uploadingfiles.storage.StorageFileNotFoundException;
 import com.example.uploadingfiles.storage.StorageService;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.web.bind.annotation.Value;
+import org.springframework.beans.factory.annotation.Value;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.File; 
