@@ -120,7 +120,7 @@ public class FileUploadController {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                return result;
+                return result.toString;
 		
 // 		ArrayList<String> result = new ArrayList<>();
 // 		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
