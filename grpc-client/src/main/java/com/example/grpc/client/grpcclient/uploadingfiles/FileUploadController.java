@@ -78,7 +78,7 @@ public class FileUploadController {
            	}else {
 		
 			redirectAttributes.addFlashAttribute("message",
-					"You successfully uploaded " + file.getOriginalFilename() + "!");
+					"You successfully TEST uploaded " + file.getOriginalFilename() + "!");
 		}
 
 		return "redirect:/";
