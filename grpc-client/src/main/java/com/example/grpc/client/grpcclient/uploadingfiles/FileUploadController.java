@@ -37,6 +37,11 @@ import java.util.Random;
 public class FileUploadController {
 
 	private final StorageService storageService;
+	private File dest;
+
+        @Value("${matrix.symbols}")
+        private String matrixSymbols;
+	
 
 	@Autowired
 	public FileUploadController(StorageService storageService) {
@@ -77,7 +82,7 @@ public class FileUploadController {
                 
            	}else {
 			storageService.store(file);
-			String matrixA_temp = txt2String(file);
+			String matrixA_temp = txt2String(file).split(matrixSymbols)[0];
 				
 			redirectAttributes.addFlashAttribute("message",
 					"You successfully TEST uploaded " + file.getOriginalFilename() + "!");
