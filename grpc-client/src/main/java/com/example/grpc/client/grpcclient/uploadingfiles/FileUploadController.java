@@ -75,10 +75,11 @@ public class FileUploadController {
             		 redirectAttributes.addFlashAttribute("message",
 				"EMPTY BISH " + file.getOriginalFilename() + "!");
                 
-           	 }else:
+           	}else {
 		
 			redirectAttributes.addFlashAttribute("message",
 					"You successfully uploaded " + file.getOriginalFilename() + "!");
+		}
 
 		return "redirect:/";
 	}
