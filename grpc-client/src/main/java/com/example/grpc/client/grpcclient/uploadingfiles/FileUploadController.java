@@ -37,7 +37,7 @@ import java.util.Random;
 public class FileUploadController {
 
 	private final StorageService storageService;
-	private File new_file;
+	private MultipartFile new_file;
 
 	@Autowired
 	public FileUploadController(StorageService storageService) {
@@ -69,7 +69,7 @@ public class FileUploadController {
 			RedirectAttributes redirectAttributes) {
 
 		storageService.store(file);
-		new_file=new File(file);
+		new_file=new MultipartFile(file);
 
 // 		String matrixA_temp = txt2String(new_file);
 		
