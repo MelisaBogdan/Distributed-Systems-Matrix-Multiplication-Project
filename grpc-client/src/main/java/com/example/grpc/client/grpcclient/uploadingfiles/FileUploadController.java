@@ -64,22 +64,22 @@ public class FileUploadController {
 	}
 
 	@PostMapping("/")
-	public String handleFileUpload(@RequestParam("file") File file,
+	public String handleFileUpload(@RequestParam("file") MultipartFile file,
 			RedirectAttributes redirectAttributes) {
 
 		storageService.store(file);
 		
 		// add stuff here
 		String matrixA_temp = txt2String(file);
-		int[][] matrixA = convertToMatrix(matrixA_temp);
+// 		int[][] matrixA = convertToMatrix(matrixA_temp);
 		
-		if(matrixA.length != matrixA[0].length){
-                        String data  = "Matrix A: " + matrixA.length  + "x" + matrixA[0].length;
-//                                data += "  Matrix B: " + matrixB.length  + "x" + matrixB[0].length;
-//                         return new FileUploadResponse(fileName, contentType, "Rows and Columns of the Matrices should be equal size!!! " + data);
-                	redirectAttributes.addFlashAttribute("message",
-				"Rows and Columns of the Matrices should be equal size!!! " + file.getOriginalFilename() + "!");
-		}
+// 		if(matrixA.length != matrixA[0].length){
+//                         String data  = "Matrix A: " + matrixA.length  + "x" + matrixA[0].length;
+// //                                data += "  Matrix B: " + matrixB.length  + "x" + matrixB[0].length;
+// //                         return new FileUploadResponse(fileName, contentType, "Rows and Columns of the Matrices should be equal size!!! " + data);
+//                 	redirectAttributes.addFlashAttribute("message",
+// 				"Rows and Columns of the Matrices should be equal size!!! " + file.getOriginalFilename() + "!");
+// 		}
 
 	
 		redirectAttributes.addFlashAttribute("message",
