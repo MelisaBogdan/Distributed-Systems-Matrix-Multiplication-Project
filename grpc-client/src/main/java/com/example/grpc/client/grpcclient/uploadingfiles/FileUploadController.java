@@ -93,7 +93,7 @@ public class FileUploadController {
 // 			
 			String matrix1= txt2String(dest).split(matrixSymbols)[0];	
 			redirectAttributes.addFlashAttribute("message",
-					"You successfully uploaded " +" "+result+ file.getOriginalFilename() + "!!");
+					"You successfully uploaded " +" "+matrix1+ file.getOriginalFilename() + "!!");
 		}
 
 		return "redirect:/";
