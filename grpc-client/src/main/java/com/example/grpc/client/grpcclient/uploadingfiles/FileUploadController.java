@@ -76,17 +76,24 @@ public class FileUploadController {
 	public String handleFileUpload(@RequestParam("file") MultipartFile file,
 			RedirectAttributes redirectAttributes) {
 
+		String filePathServer = "/home/melisa_bogdan/CW-DS";
+		dest = new File(filePathServer + '/' + ffile.getOriginalFilename());
+		try { 
+			file.transferTo(dest); 
+		} catch (Exception e) { 
+			redirectAttributes.addFlashAttribute("message",
+					"File is not provided, pls add a file!! " + file.getOriginalFilename() + "!!");
 		
 		
+// 		CHECK IF FILE EMPTY
 		if (file.isEmpty()) {
             		 redirectAttributes.addFlashAttribute("message",
 				"File " + file.getOriginalFilename() + " is empty! Upload again. ");
-                
            	}else {
 			storageService.store(file);
 			ArrayList<String> result = new ArrayList<>();
 
-			try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+			try (BufferedReader br = new BufferedReader(new FileReader(dest))) {
 				 while (br.ready()) {
 					result.add(br.readLine());
 				}
@@ -113,28 +120,28 @@ public class FileUploadController {
 	
 // 	// Get matrix string from the file
         public static String txt2String(File file) {
-//                 StringBuilder result = new StringBuilder();
-//                 try {
-//                     BufferedReader br = new BufferedReader(new FileReader(file));
-//                     String s = null;
-//                     while ((s = br.readLine()) != null) {
-//                         result.append(System.lineSeparator() + s);
-//                     }
-//                     br.close();
-//                 } catch (Exception e) {
-//                     e.printStackTrace();
-//                 }
-//                 return result.toString();
-		ArrayList<String> result = new ArrayList<>();
-
-		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-   			 while (br.ready()) {
-        			result.add(br.readLine());
-    			}
-		} catch (Exception e) {
-			e.printStackTrace();
-            	}
-		return result.toString();
+                StringBuilder result = new StringBuilder();
+                try {
+                    BufferedReader br = new BufferedReader(new FileReader(file));
+                    String s = null;
+                    while ((s = br.readLine()) != null) {
+                        result.append(System.lineSeparator() + s);
+                    }
+                    br.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                return result.toString();
+		
+// 		ArrayList<String> result = new ArrayList<>();
+// 		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+//    			 while (br.ready()) {
+//         			result.add(br.readLine());
+//     			}
+// 		} catch (Exception e) {
+// 			e.printStackTrace();
+//             	}
+// 		return result.toString();
         }
 	
 	 public static int[][] convertToMatrix(String m){
