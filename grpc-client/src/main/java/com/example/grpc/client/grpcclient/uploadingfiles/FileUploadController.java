@@ -90,18 +90,8 @@ public class FileUploadController {
             		 redirectAttributes.addFlashAttribute("message",
 				"File " + file.getOriginalFilename() + " is empty! Upload again. ");
            	}else {
-// 			storageService.store(file);
-			ArrayList<String> result = new ArrayList<>();
-
-			try (BufferedReader br = new BufferedReader(new FileReader(dest))) {
-				 while (br.ready()) {
-					result.add(br.readLine());
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-// 			result=result.toString();
-				
+// 			
+			String matrix1= txt2String(dest).split(matrixSymbols)[0];	
 			redirectAttributes.addFlashAttribute("message",
 					"You successfully uploaded " +" "+result+ file.getOriginalFilename() + "!!");
 		}
@@ -130,7 +120,7 @@ public class FileUploadController {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                return result.toString();
+                return result;
 		
 // 		ArrayList<String> result = new ArrayList<>();
 // 		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
