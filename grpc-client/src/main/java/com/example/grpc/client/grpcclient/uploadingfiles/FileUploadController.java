@@ -90,7 +90,7 @@ public class FileUploadController {
             		 redirectAttributes.addFlashAttribute("message",
 				"File " + file.getOriginalFilename() + " is empty! Upload again. ");
            	}else {
-			storageService.store(file);
+// 			storageService.store(file);
 			ArrayList<String> result = new ArrayList<>();
 
 			try (BufferedReader br = new BufferedReader(new FileReader(dest))) {
