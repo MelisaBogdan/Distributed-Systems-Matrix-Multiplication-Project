@@ -37,6 +37,7 @@ import java.util.Random;
 public class FileUploadController {
 
 	private final StorageService storageService;
+	private File new_file;
 
 	@Autowired
 	public FileUploadController(StorageService storageService) {
