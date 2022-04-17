@@ -63,17 +63,29 @@ public class FileUploadController {
 				"attachment; filename=\"" + file.getFilename() + "\"").body(file);
 	}
 
+	
+	
 	@PostMapping("/")
 	public String handleFileUpload(@RequestParam("file") MultipartFile file,
 			RedirectAttributes redirectAttributes) {
 
 		storageService.store(file);
-		redirectAttributes.addFlashAttribute("message",
-				"You successfully uploaded " + file.getOriginalFilename() + "!");
+		
+		if (file.isEmpty()) {
+            		 redirectAttributes.addFlashAttribute("message",
+				"EMPTY BISH " + file.getOriginalFilename() + "!");
+                
+           	 }else:
+		
+			redirectAttributes.addFlashAttribute("message",
+					"You successfully uploaded " + file.getOriginalFilename() + "!");
 
 		return "redirect:/";
 	}
 
+	
+	
+	
 	@ExceptionHandler(StorageFileNotFoundException.class)
 	public ResponseEntity<?> handleStorageFileNotFound(StorageFileNotFoundException exc) {
 		return ResponseEntity.notFound().build();
