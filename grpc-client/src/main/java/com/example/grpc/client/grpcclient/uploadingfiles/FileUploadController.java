@@ -84,10 +84,20 @@ public class FileUploadController {
                 
            	}else {
 			storageService.store(file);
-			String matrixA_temp = txt2String(file).split(matrixSymbols)[0];
+			ArrayList<String> result = new ArrayList<>();
+
+			try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+				 while (br.ready()) {
+					result.add(br.readLine());
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			result=result.toString();
+// 			String matrixA_temp = txt2String(file).split(matrixSymbols)[0];
 				
 			redirectAttributes.addFlashAttribute("message",
-					"You successfully TEST uploaded " + file.getOriginalFilename() + "!");
+					"You successfully uploaded " + file.getOriginalFilename() + "!!");
 		}
 
 		return "redirect:/";
