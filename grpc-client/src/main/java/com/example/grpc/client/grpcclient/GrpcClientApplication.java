@@ -1,38 +1,3 @@
-
- 
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@MelisaBogdan 
-jdoyle314
-/
-ECS656U-796PLab2StartingPoint
-Public
- Watch 1 
-Fork 27
- Starred 3
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
- main 
-ECS656U-796PLab2StartingPoint/grpc-client/src/main/java/com/example/grpc/client/grpcclient/GrpcClientApplication.java  / Jump to 
-Go to file
-
-@jdoyle314
-jdoyle314 Initial Commit
-Latest commit b1a61ef on 21 Feb
- History
- 1 contributor
-51 lines (38 sloc)  1.57 KB
-Raw Blame
-     
 package com.example.grpc.client.grpcclient;
 
 import com.example.grpc.server.grpcserver.HelloRequest;
