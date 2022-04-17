@@ -91,9 +91,11 @@ public class FileUploadController {
 				"File " + file.getOriginalFilename() + " is empty! Upload again. ");
            	}else {
 // 			
-			String matrix1= txt2String(dest).split(matrixSymbols)[0];	
+			String matrix1= txt2String(dest).split(matrixSymbols)[0];
+			String matrix2 = txt2String(dest).split(matrixSymbols)[1];
+			
 			redirectAttributes.addFlashAttribute("message",
-					"You successfully uploaded " +" "+ file.getOriginalFilename() + " and result is "+ +matrix1+ " !!");
+					"You successfully uploaded " +" "+ file.getOriginalFilename() + " and results are "+ +matrix1+" "+matrix2+ " !!");
 		}
 
 		return "redirect:/";
