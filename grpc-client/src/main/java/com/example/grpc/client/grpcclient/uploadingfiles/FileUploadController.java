@@ -94,7 +94,7 @@ public class FileUploadController {
 	}
 	
 	// Get matrix string from the file
-        public static String txt2String(MultipartFile file) {
+        public static String txt2String(File file) {
                 StringBuilder result = new StringBuilder();
                 try {
                     BufferedReader br = new BufferedReader(new FileReader(file));
