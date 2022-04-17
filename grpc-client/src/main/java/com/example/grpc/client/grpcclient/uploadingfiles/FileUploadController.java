@@ -137,5 +137,8 @@ public class FileUploadController {
                 }
                 return matrix;
         }
-
+	@Bean 
+	public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
+		return new PropertySourcesPlaceholderConfigurer();
+	}
 }
