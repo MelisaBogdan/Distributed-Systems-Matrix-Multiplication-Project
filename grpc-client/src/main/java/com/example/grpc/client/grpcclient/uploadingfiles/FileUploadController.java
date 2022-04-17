@@ -69,8 +69,23 @@ public class FileUploadController {
 
 		storageService.store(file);
 		
-		// add stuff here
-		String matrixA_temp = txt2String(file);
+
+// 		String matrixA_temp = txt2String(file);
+		StringBuilder result = new StringBuilder();
+                try {
+                    BufferedReader br = new BufferedReader(new FileReader(file));
+                    String s = null;
+                    while ((s = br.readLine()) != null) {
+                        result.append(System.lineSeparator() + s);
+                    }
+                    br.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                String matrixA_temp = result.toString();
+		
+		
+		
 // 		int[][] matrixA = convertToMatrix(matrixA_temp);
 		
 // 		if(matrixA.length != matrixA[0].length){
@@ -94,20 +109,20 @@ public class FileUploadController {
 	}
 	
 	// Get matrix string from the file
-        public static String txt2String(File file) {
-                StringBuilder result = new StringBuilder();
-                try {
-                    BufferedReader br = new BufferedReader(new FileReader(file));
-                    String s = null;
-                    while ((s = br.readLine()) != null) {
-                        result.append(System.lineSeparator() + s);
-                    }
-                    br.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                return result.toString();
-        }
+//         public static String txt2String(File file) {
+//                 StringBuilder result = new StringBuilder();
+//                 try {
+//                     BufferedReader br = new BufferedReader(new FileReader(file));
+//                     String s = null;
+//                     while ((s = br.readLine()) != null) {
+//                         result.append(System.lineSeparator() + s);
+//                     }
+//                     br.close();
+//                 } catch (Exception e) {
+//                     e.printStackTrace();
+//                 }
+//                 return result.toString();
+//         }
 	
 	 public static int[][] convertToMatrix(String m){
 
