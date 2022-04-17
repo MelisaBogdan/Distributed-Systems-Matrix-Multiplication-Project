@@ -42,7 +42,7 @@ public class FileUploadController {
 	private File dest;
 
         @Value("${matrix.symbols}")
-        private String matrixSymbols;
+        private String matrixSymbols=" ";
 	
 
 	@Autowired
