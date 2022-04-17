@@ -22,6 +22,17 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.example.uploadingfiles.storage.StorageFileNotFoundException;
 import com.example.uploadingfiles.storage.StorageService;
 
+//
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.File; 
+import java.io.IOException;
+import java.util.*;
+import java.util.ArrayList;
+import java.text.DecimalFormat;
+import java.util.Random;
+//
+
 @Controller
 public class FileUploadController {
 
@@ -62,9 +73,9 @@ public class FileUploadController {
 		String matrixA_temp = txt2String(file);
 		int[][] matrixA = convertToMatrix(matrixA_temp);
 		
-		if(matrixA.length != matrixA[0].length || matrixB.length != matrixB[0].length){
+		if(matrixA.length != matrixA[0].length){
                         String data  = "Matrix A: " + matrixA.length  + "x" + matrixA[0].length;
-                               data += "  Matrix B: " + matrixB.length  + "x" + matrixB[0].length;
+//                                data += "  Matrix B: " + matrixB.length  + "x" + matrixB[0].length;
 //                         return new FileUploadResponse(fileName, contentType, "Rows and Columns of the Matrices should be equal size!!! " + data);
                 	redirectAttributes.addFlashAttribute("message",
 				"Rows and Columns of the Matrices should be equal size!!! " + file.getOriginalFilename() + "!");
@@ -83,7 +94,7 @@ public class FileUploadController {
 	}
 	
 	// Get matrix string from the file
-        public static String txt2String(File file) {
+        public static String txt2String(MultipartFile file) {
                 StringBuilder result = new StringBuilder();
                 try {
                     BufferedReader br = new BufferedReader(new FileReader(file));
