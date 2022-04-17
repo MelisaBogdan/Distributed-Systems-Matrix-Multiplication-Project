@@ -41,7 +41,11 @@ public class FileUploadController {
 				.collect(Collectors.toList()));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 		return "uploadFile";
+=======
+		return "uploadForm";
+>>>>>>> parent of 5cead0d (changed uploadForm into upload)
 =======
 		return "uploadForm";
 >>>>>>> parent of 5cead0d (changed uploadForm into upload)
