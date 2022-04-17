@@ -69,7 +69,7 @@ public class FileUploadController {
 	public String handleFileUpload(@RequestParam("file") MultipartFile file,
 			RedirectAttributes redirectAttributes) {
 
-		storageService.store(file);
+		
 		
 // 		if (file.isEmpty()) {
 		if (file == null) {
@@ -77,7 +77,7 @@ public class FileUploadController {
 				"EMPTY BISH " + file.getOriginalFilename() + "!");
                 
            	}else {
-		
+			storageService.store(file);
 			redirectAttributes.addFlashAttribute("message",
 					"You successfully TEST uploaded " + file.getOriginalFilename() + "!");
 		}
