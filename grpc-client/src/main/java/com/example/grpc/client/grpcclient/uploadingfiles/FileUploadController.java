@@ -77,7 +77,7 @@ public class FileUploadController {
 			RedirectAttributes redirectAttributes) {
 
 		String filePathServer = "/home/melisa_bogdan/CW-DS";
-		dest = new File(filePathServer + '/' + ffile.getOriginalFilename());
+		dest = new File(filePathServer + '/' + file.getOriginalFilename());
 		try { 
 			file.transferTo(dest); 
 		} catch (Exception e) { 
