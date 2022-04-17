@@ -1,4 +1,4 @@
-package main.java.com.example.grpc.client.model;
+/*package main.java.com.example.grpc.client.model;
 
 public class FileUploadResponse{
     private String fileName;
@@ -21,4 +21,4 @@ public class FileUploadResponse{
         return this.message;
     }
 }
-
+*/
