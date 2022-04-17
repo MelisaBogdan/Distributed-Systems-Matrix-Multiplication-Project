@@ -71,7 +71,7 @@ public class FileUploadController {
 		storageService.store(file);
 		new_file=new File(file);
 
-		String matrixA_temp = txt2String(new_file);
+// 		String matrixA_temp = txt2String(new_file);
 		
 		
 // 		int[][] matrixA = convertToMatrix(matrixA_temp);
