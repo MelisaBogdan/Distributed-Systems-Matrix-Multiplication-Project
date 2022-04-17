@@ -100,7 +100,7 @@ public class FileUploadController {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			result=result.toString();
+// 			result=result.toString();
 // 			String matrixA_temp = txt2String(file).split(matrixSymbols)[0];
 				
 			redirectAttributes.addFlashAttribute("message",
