@@ -34,6 +34,6 @@ public class PingPongEndpoint {
 // 	}
 	@GetMapping("/")
 	public String upload(Model model) {
-        return "upload";
+        	return "upload";
 	}
 }
