@@ -103,18 +103,28 @@ public class FileUploadController {
 	
 // 	// Get matrix string from the file
         public static String txt2String(File file) {
-                StringBuilder result = new StringBuilder();
-                try {
-                    BufferedReader br = new BufferedReader(new FileReader(file));
-                    String s = null;
-                    while ((s = br.readLine()) != null) {
-                        result.append(System.lineSeparator() + s);
-                    }
-                    br.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                return result.toString();
+//                 StringBuilder result = new StringBuilder();
+//                 try {
+//                     BufferedReader br = new BufferedReader(new FileReader(file));
+//                     String s = null;
+//                     while ((s = br.readLine()) != null) {
+//                         result.append(System.lineSeparator() + s);
+//                     }
+//                     br.close();
+//                 } catch (Exception e) {
+//                     e.printStackTrace();
+//                 }
+//                 return result.toString();
+		ArrayList<String> result = new ArrayList<>();
+
+		try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
+   			 while (br.ready()) {
+        			result.add(br.readLine());
+    			}
+		} catch (Exception e) {
+			e.printStackTrace();
+            	}
+		return result.toString();
         }
 	
 	 public static int[][] convertToMatrix(String m){
