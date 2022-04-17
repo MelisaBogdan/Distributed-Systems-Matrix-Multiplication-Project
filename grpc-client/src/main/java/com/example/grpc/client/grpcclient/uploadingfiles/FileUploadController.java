@@ -101,10 +101,9 @@ public class FileUploadController {
 				e.printStackTrace();
 			}
 // 			result=result.toString();
-			String matrixA_temp = txt2String(result).split(matrixSymbols)[0];
 				
 			redirectAttributes.addFlashAttribute("message",
-					"You successfully uploaded " + file.getOriginalFilename() + "!!");
+					"You successfully uploaded " +" "+result+ file.getOriginalFilename() + "!!");
 		}
 
 		return "redirect:/";
