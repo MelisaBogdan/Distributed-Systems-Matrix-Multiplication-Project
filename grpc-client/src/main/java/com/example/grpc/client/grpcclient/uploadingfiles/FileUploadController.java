@@ -75,7 +75,8 @@ public class FileUploadController {
 	@PostMapping("/")
 	public String handleFileUpload(@RequestParam("file") MultipartFile file,
 			RedirectAttributes redirectAttributes, Model model) {
-
+		
+		String matrixOne="";
 		String filePathServer = "/home/melisa_bogdan/CW-DS";
 		dest = new File(filePathServer + '/' + file.getOriginalFilename());
 		try { 
