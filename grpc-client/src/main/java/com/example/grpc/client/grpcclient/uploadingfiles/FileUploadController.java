@@ -85,7 +85,7 @@ public class FileUploadController {
 					"File is not provided, please add a file!! " + file.getOriginalFilename() + "!!");
 		
 		}
-// 		CHECK IF FILE EMPTY
+		// CHECK IF FILE EMPTY
 		if (file.isEmpty()) {
             		 redirectAttributes.addFlashAttribute("message",
 				"File " + file.getOriginalFilename() + " is empty! Upload again. ");
@@ -97,12 +97,13 @@ public class FileUploadController {
 			int[][] matrixA = convertToMatrix(matrixOne);
 			int[][] matrixB = convertToMatrix(matrixTwo);
 			
+			// CHECK IF MATRIX FORMAT IS RIGHT (SQUARE)
 			redirectAttributes.addFlashAttribute("message",
 					"You successfully uploaded " +" "+ file.getOriginalFilename() +" !!");
 			redirectAttributes.addFlashAttribute("matrix1",
-					"Matrix 1 from file is: " +" "+ matrixOne);
+					"Matrix 1 from file is: " +" "+ matrixA);
 			redirectAttributes.addFlashAttribute("matrix2",
-					"Matrix 2 from file is: " +" "+ matrixTwo);
+					"Matrix 2 from file is: " +" "+ matrixB);
 		}
 
 		return "redirect:/";
