@@ -99,8 +99,8 @@ public class FileUploadController {
 			
 			// CHECK IF MATRIX FORMAT IS RIGHT (SQUARE)
 			if(matrixA.length != matrixA[0].length || matrixB.length != matrixB[0].length){
-				String data  = "Matrix A: " + matrixA.length  + "x" + matrixA[0].length;
-				       data += "  Matrix B: " + matrixB.length  + "x" + matrixB[0].length;
+// 				String data  = "Matrix A: " + matrixA.length  + "x" + matrixA[0].length;
+// 				       data += "  Matrix B: " + matrixB.length  + "x" + matrixB[0].length;
 				redirectAttributes.addFlashAttribute("message",
 				"Matrices in file " + file.getOriginalFilename() + " are not square!! ");
                 	}else{
