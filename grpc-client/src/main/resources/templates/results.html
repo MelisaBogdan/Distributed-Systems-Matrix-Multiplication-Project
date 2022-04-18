@@ -10,15 +10,15 @@
 			
 			<table>
 				<tr><td>Select file to upload:</td><td><input type="file" name="file" /></td></tr>
-				<tr><td></td><td><input type="submit" value="Upload" /></td></tr>
+				<tr><td></td><td><input type="submit" value="Multiply" /></td></tr>
 			</table>
 		</form>
 	</div>
 
 	<div>
 		<ul>
-			<li th:each="file : ${files}">
-				<a th:href="${file}" th:text="${file}" />
+			<li th:each="matrix : ${matrix}">
+				<a th:href="${matrix}" th:text="${matrix}" />
 			</li>
 		</ul>
 	</div>
