@@ -95,10 +95,11 @@ public class FileUploadController {
 			String matrixTwo = txt2String(dest).split(matrixSymbols)[1];
 			
 			redirectAttributes.addFlashAttribute("message",
-					"You successfully uploaded " +" "+ file.getOriginalFilename() + " and results is "+matrixOne + " and "+ matrixTwo +" !!");
-			
+					"You successfully uploaded " +" "+ file.getOriginalFilename() +" !!");
 			redirectAttributes.addFlashAttribute("matrix",
-					"Matrices are: " +" "+ matrixOne + " and "+ matrixTwo +" !!");
+					"Matrix 1 from file is: " +" "+ matrixOne);
+			redirectAttributes.addFlashAttribute("matrix",
+					"Matrix 2 from file is: " +" "+ matrixTwo);
 		}
 
 		return "redirect:/";
