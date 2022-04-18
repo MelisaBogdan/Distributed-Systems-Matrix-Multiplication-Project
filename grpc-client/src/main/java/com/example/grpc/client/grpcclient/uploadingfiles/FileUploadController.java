@@ -112,7 +112,7 @@ public class FileUploadController {
 				redirectAttributes.addFlashAttribute("matrix1",
 						"Matrix 1 from file is: " +" "+ matrixA[0].length.toString());
 				redirectAttributes.addFlashAttribute("matrix2",
-						"Matrix 2 from file is: " +" "+ matrixATwo);
+						"Matrix 2 from file is: " +" "+ matrixTwo);
 				}
 		}
 
