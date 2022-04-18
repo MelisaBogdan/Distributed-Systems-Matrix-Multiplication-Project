@@ -103,7 +103,7 @@ public class FileUploadController {
 // 				       data += "  Matrix B: " + matrixB.length  + "x" + matrixB[0].length;
 				redirectAttributes.addFlashAttribute("message",
 				"Matrices in file " + file.getOriginalFilename() + " are not square!! ");
-                	if(matrixA.length % 4 !=0 || matrixB.length % 4 !=0 ){
+			}else if(matrixA.length % 4 !=0 || matrixB.length % 4 !=0 ){
 				redirectAttributes.addFlashAttribute("message",
 				"Matrices in file " + file.getOriginalFilename() + " are not accepted (length not multiple by 4) !! ");
 			}else{
