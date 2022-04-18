@@ -96,9 +96,9 @@ public class FileUploadController {
 			
 			redirectAttributes.addFlashAttribute("message",
 					"You successfully uploaded " +" "+ file.getOriginalFilename() +" !!");
-			redirectAttributes.addFlashAttribute("matrix",
+			redirectAttributes.addFlashAttribute("matrix1",
 					"Matrix 1 from file is: " +" "+ matrixOne);
-			redirectAttributes.addFlashAttribute("matrix",
+			redirectAttributes.addFlashAttribute("matrix2",
 					"Matrix 2 from file is: " +" "+ matrixTwo);
 		}
 
