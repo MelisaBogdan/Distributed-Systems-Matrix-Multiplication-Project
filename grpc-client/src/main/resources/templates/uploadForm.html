@@ -4,6 +4,10 @@
 	<div th:if="${message}">
 		<h2 th:text="${message}"/>
 	</div>
+	
+	<div th:if="${matrix}">
+		<h2 th:text="${matrix}"/>
+	</div>
 
 	<div>
 		<form method="POST" enctype="multipart/form-data" action="/">
