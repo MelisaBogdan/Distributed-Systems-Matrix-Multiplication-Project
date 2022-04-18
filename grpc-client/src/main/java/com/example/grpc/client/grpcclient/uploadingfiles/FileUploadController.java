@@ -74,7 +74,7 @@ public class FileUploadController {
 	
 	@PostMapping("/")
 	public String handleFileUpload(@RequestParam("file") MultipartFile file,
-			RedirectAttributes redirectAttributes) {
+			RedirectAttributes redirectAttributes, Model model) {
 
 		String filePathServer = "/home/melisa_bogdan/CW-DS";
 		dest = new File(filePathServer + '/' + file.getOriginalFilename());
@@ -97,7 +97,7 @@ public class FileUploadController {
 			redirectAttributes.addFlashAttribute("message",
 					"You successfully uploaded " +" "+ file.getOriginalFilename() + " and results is "+matrixOne + " and "+ matrixTwo +" !!");
 		}
-
+		model.addAttribute("matrix", matrixOne);
 		return "results";
 	}
 
