@@ -74,9 +74,8 @@ public class FileUploadController {
 	
 	@PostMapping("/")
 	public String handleFileUpload(@RequestParam("file") MultipartFile file,
-			RedirectAttributes redirectAttributes, Model model) {
-		
-		String matrixOne="";
+			RedirectAttributes redirectAttributes) {
+
 		String filePathServer = "/home/melisa_bogdan/CW-DS";
 		dest = new File(filePathServer + '/' + file.getOriginalFilename());
 		try { 
@@ -91,15 +90,17 @@ public class FileUploadController {
             		 redirectAttributes.addFlashAttribute("message",
 				"File " + file.getOriginalFilename() + " is empty! Upload again. ");
            	}else {
-			
+// 			
 			String matrixOne= txt2String(dest).split(matrixSymbols)[0];
 			String matrixTwo = txt2String(dest).split(matrixSymbols)[1];
 			
 			redirectAttributes.addFlashAttribute("message",
 					"You successfully uploaded " +" "+ file.getOriginalFilename() + " and results is "+matrixOne + " and "+ matrixTwo +" !!");
-			redirectAttributes.addFlashAttribute("matrix",
-					"Matrices are: " +" "+ matrixOne + " and "+ matrixTwo +" !!");
+			
+// 			redirectAttributes.addFlashAttribute("matrix",
+// 					"Matrices are: " +" "+ matrixOne + " and "+ matrixTwo +" !!");
 		}
+
 		return "redirect:/";
 	}
 
