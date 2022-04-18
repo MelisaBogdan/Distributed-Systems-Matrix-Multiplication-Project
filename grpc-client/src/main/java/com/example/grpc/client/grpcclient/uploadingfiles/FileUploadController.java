@@ -90,7 +90,7 @@ public class FileUploadController {
             		 redirectAttributes.addFlashAttribute("message",
 				"File " + file.getOriginalFilename() + " is empty! Upload again. ");
            	}else {
-// 			
+			
 			String matrixOne= txt2String(dest).split(matrixSymbols)[0];
 			String matrixTwo = txt2String(dest).split(matrixSymbols)[1];
 			
@@ -99,21 +99,20 @@ public class FileUploadController {
 			
 			// CHECK IF MATRIX FORMAT IS RIGHT (SQUARE)
 			if(matrixA.length != matrixA[0].length || matrixB.length != matrixB[0].length){
-// 				String data  = "Matrix A: " + matrixA.length  + "x" + matrixA[0].length;
-// 				       data += "  Matrix B: " + matrixB.length  + "x" + matrixB[0].length;
 				redirectAttributes.addFlashAttribute("message",
 				"Matrices in file " + file.getOriginalFilename() + " are not square!! ");
 			}else if(matrixA.length % 4 !=0 || matrixB.length % 4 !=0 ){
 				redirectAttributes.addFlashAttribute("message",
 				"Matrices in file " + file.getOriginalFilename() + " are not accepted (length not multiple by 4) !! ");
-// 			}else{
+			}else{
+// 			all clear
 				redirectAttributes.addFlashAttribute("message",
 						"You successfully uploaded " +" "+ file.getOriginalFilename() +" !!");
 				redirectAttributes.addFlashAttribute("matrix1",
-						"Matrix 1 from file is: " +" "+ matrixA[0].length.toString());
+						"Matrix 1 from file is: " +" "+ matrixOne);
 				redirectAttributes.addFlashAttribute("matrix2",
 						"Matrix 2 from file is: " +" "+ matrixTwo);
-				}
+			}
 		}
 
 		return "redirect:/";
