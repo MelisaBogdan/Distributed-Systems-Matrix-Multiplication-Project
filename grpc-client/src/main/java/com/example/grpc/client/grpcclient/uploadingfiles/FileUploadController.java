@@ -98,7 +98,7 @@ public class FileUploadController {
 					"You successfully uploaded " +" "+ file.getOriginalFilename() + " and results is "+matrixOne + " and "+ matrixTwo +" !!");
 		}
 
-		return "redirect:/";
+		return "results";
 	}
 
 	
