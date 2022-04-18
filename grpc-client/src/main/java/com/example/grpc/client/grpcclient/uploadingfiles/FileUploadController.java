@@ -98,12 +98,19 @@ public class FileUploadController {
 			int[][] matrixB = convertToMatrix(matrixTwo);
 			
 			// CHECK IF MATRIX FORMAT IS RIGHT (SQUARE)
-			redirectAttributes.addFlashAttribute("message",
-					"You successfully uploaded " +" "+ file.getOriginalFilename() +" !!");
-			redirectAttributes.addFlashAttribute("matrix1",
-					"Matrix 1 from file is: " +" "+ matrixA);
-			redirectAttributes.addFlashAttribute("matrix2",
-					"Matrix 2 from file is: " +" "+ matrixB);
+			if(matrixA.length != matrixA[0].length || matrixB.length != matrixB[0].length){
+				String data  = "Matrix A: " + matrixA.length  + "x" + matrixA[0].length;
+				       data += "  Matrix B: " + matrixB.length  + "x" + matrixB[0].length;
+				redirectAttributes.addFlashAttribute("message",
+				"Matrices in file " + file.getOriginalFilename() + " are not square!! ");
+                	}else{
+				redirectAttributes.addFlashAttribute("message",
+						"You successfully uploaded " +" "+ file.getOriginalFilename() +" !!");
+				redirectAttributes.addFlashAttribute("matrix1",
+						"Matrix 1 from file is: " +" "+ matrixOne);
+				redirectAttributes.addFlashAttribute("matrix2",
+						"Matrix 2 from file is: " +" "+ matrixTwo);
+				}
 		}
 
 		return "redirect:/";
