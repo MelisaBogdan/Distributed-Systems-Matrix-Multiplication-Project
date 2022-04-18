@@ -92,8 +92,7 @@ public class FileUploadController {
            	}else {
 // 			
 			String matrixOne= txt2String(dest).split(matrixSymbols)[0];
-// 			int[][] matrixA = convertToMatrix(matrixOne);
-// 			String matrix2 = txt2String(dest).split(matrixSymbols)[1];
+			String matrixTwo = txt2String(dest).split(matrixSymbols)[1];
 			
 			redirectAttributes.addFlashAttribute("message",
 					"You successfully uploaded " +" "+ file.getOriginalFilename() + " and results is "+matrixOne +" !!");
