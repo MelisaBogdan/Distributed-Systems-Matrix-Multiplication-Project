@@ -11,20 +11,10 @@ import io.grpc.ManagedChannelBuilder;
 import net.devh.boot.grpc.client.inject.GrpcClient;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Service;
+
 @Service
 public class GRPCClientService {
-    public String ping() {
-        	ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 9090)
-                .usePlaintext()
-                .build();        
-		PingPongServiceGrpc.PingPongServiceBlockingStub stub
-                = PingPongServiceGrpc.newBlockingStub(channel);        
-		PongResponse helloResponse = stub.ping(PingRequest.newBuilder()
-                .setPing("")
-                .build());        
-		channel.shutdown();        
-		return helloResponse.getPong();
-    }
+    
     public String add(){
 		ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost",9090)
 		.usePlaintext()
@@ -44,8 +34,6 @@ public class GRPCClientService {
 		String resp= A.getC00()+" "+A.getC01()+"<br>"+A.getC10()+" "+A.getC11()+"\n";
 		return resp;
     }
-//     public String upload(){
-// 	   return null;
-//     }
+	
 
 }
