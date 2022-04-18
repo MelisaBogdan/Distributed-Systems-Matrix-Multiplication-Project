@@ -82,7 +82,7 @@ public class FileUploadController {
 			file.transferTo(dest); 
 		} catch (Exception e) { 
 			redirectAttributes.addFlashAttribute("message",
-					"File is not provided, pls add a file!! " + file.getOriginalFilename() + "!!");
+					"File is not provided, please add a file!! " + file.getOriginalFilename() + "!!");
 		
 		}
 // 		CHECK IF FILE EMPTY
@@ -91,12 +91,12 @@ public class FileUploadController {
 				"File " + file.getOriginalFilename() + " is empty! Upload again. ");
            	}else {
 // 			
-			String matrix1= txt2String(dest).split(matrixSymbols)[0];
-// 			int[][] matrixA = convertToMatrix(matrix1);
+			String matrixOne= txt2String(dest).split(matrixSymbols)[0];
+// 			int[][] matrixA = convertToMatrix(matrixOne);
 // 			String matrix2 = txt2String(dest).split(matrixSymbols)[1];
 			
 			redirectAttributes.addFlashAttribute("message",
-					"You successfully uploaded " +" "+ file.getOriginalFilename() + " and results are "+ " !!");
+					"You successfully uploaded " +" "+ file.getOriginalFilename() + " and results is "+matrixOne +" !!");
 		}
 
 		return "redirect:/";
