@@ -91,7 +91,7 @@ public class FileUploadController {
             		 redirectAttributes.addFlashAttribute("message",
 				"File " + file.getOriginalFilename() + " is empty! Upload again. ");
            	}else {
-// 			
+			
 			String matrixOne= txt2String(dest).split(matrixSymbols)[0];
 			String matrixTwo = txt2String(dest).split(matrixSymbols)[1];
 			
@@ -100,7 +100,6 @@ public class FileUploadController {
 			redirectAttributes.addFlashAttribute("matrix",
 					"Matrices are: " +" "+ matrixOne + " and "+ matrixTwo +" !!");
 		}
-		// model.addAttribute("matrix", matrixOne);
 		return "redirect:/";
 	}
 
