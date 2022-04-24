@@ -156,7 +156,7 @@ public class FileUploadController {
 		return true;
 	}
 	
-	public void grpcClient(int[][]a, int[][]b){
+	public void grpcClient(int[][]A, int[][]B){
                 System.out.println("\n=====================================");
 // 	deadline based scaling
                 // at least 8 channels with the target's address and port number.
@@ -188,28 +188,40 @@ public class FileUploadController {
                 MatrixServiceGrpc.MatrixServiceBlockingStub stub7 = MatrixServiceGrpc.newBlockingStub(channel7);
                 MatrixServiceGrpc.MatrixServiceBlockingStub stub8 = MatrixServiceGrpc.newBlockingStub(channel8);
 		
-// 		for (int i = 0; i < N; i++) { // row
-//                         for (int j = 0; j < N; j++) { // col
-//                             for (int k = 0; k < N; k++) {
+		ArrayList<MatrixServiceGrpc.MatrixServiceBlockingStub> stubss = new ArrayList<MatrixServiceGrpc.MatrixServiceBlockingStub>();
+                stubss.add(stub1);
+                stubss.add(stub2);
+                stubss.add(stub3);
+                stubss.add(stub4);
+                stubss.add(stub5);
+                stubss.add(stub6);
+                stubss.add(stub7);
+                stubss.add(stub8);
+		
+// 		rows
+		int N= A.length;
+		for (int i = 0; i < N; i++) { // row
+                        for (int j = 0; j < N; j++) { // col
+                            for (int k = 0; k < N; k++) {
                                 
-//                                 MatrixReply temp=stubss.get(stubs_index).multiplyBlock(MatrixRequest.newBuilder().setA(a[i][k]).setB(b[k][j]).build());
-//                                 if(stubs_index == number_of_servers_in_use-1) stubs_index = 0;
-//                                 else stubs_index++;
-//                                 MatrixReply temp2=stubss.get(stubs_index).addBlock(MatrixRequest.newBuilder().setA(c[i][j]).setB(temp.getC()).build());
-//                                 c[i][j] = temp2.getC();
-//                                 if(stubs_index == number_of_servers_in_use-1) stubs_index = 0;
-//                                 else stubs_index++;
-//                             }
-//                         }
-//                     }
+                                MatrixReply temp=stubss.get(stubs_index).multiplyBlock(MatrixRequest.newBuilder().setA(a[i][k]).setB(b[k][j]).build());
+                                if(stubs_index == number_of_servers_in_use-1) stubs_index = 0;
+                                else stubs_index++;
+                                MatrixReply temp2=stubss.get(stubs_index).addBlock(MatrixRequest.newBuilder().setA(c[i][j]).setB(temp.getC()).build());
+                                c[i][j] = temp2.getC();
+                                if(stubs_index == number_of_servers_in_use-1) stubs_index = 0;
+                                else stubs_index++;
+                            }
+                        }
+                    }
 
-//                     // Print result matrix
-//                     for (int i = 0; i < a.length; i++) {
-//                         for (int j = 0; j < a[0].length; j++) {
-//                             System.out.print(c[i][j] + " ");
-//                         }
-//                         System.out.println("");
-//                     }
+                    // Print result matrix
+                    for (int i = 0; i < A.length; i++) {
+                        for (int j = 0; j < A[0].length; j++) {
+                            System.out.print(c[i][j] + " ");
+                        }
+                        System.out.println("");
+                    }
 	}
 	
 	
@@ -266,8 +278,5 @@ public class FileUploadController {
                 }
                 return matrix;
         }
-// 	@Bean 
-// 	public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
-// 		return new PropertySourcesPlaceholderConfigurer();
-// 	}
+
 }
