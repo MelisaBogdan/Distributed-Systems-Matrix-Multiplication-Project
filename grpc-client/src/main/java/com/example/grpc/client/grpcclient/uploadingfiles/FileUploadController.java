@@ -99,8 +99,8 @@ public class FileUploadController {
 			String matrixOne= get_string_matrix(destination).split(matrixS)[0];
 			String matrixTwo = get_string_matrix(destination).split(matrixS)[1];
 			
-			int[][] matrixA = matrix_conversion(matrixOne);
-			int[][] matrixB = matrix_conversion(matrixTwo);
+			int[][] matrix1 = matrix_conversion(matrixOne);
+			int[][] matrix2 = matrix_conversion(matrixTwo);
 			
 			// CHECK IF MATRIX FORMAT IS RIGHT (SQUARE)
 			if(matrixA.length != matrixA[0].length || matrixB.length != matrixB[0].length){
@@ -117,7 +117,7 @@ public class FileUploadController {
 						"Matrix 1 from file is: " +" "+ matrixOne);
 				redirectAttributes.addFlashAttribute("matrix2",
 						"Matrix 2 from file is: " +" "+ matrixTwo);
-			grpcClient(matrixOne, matrixTwo);
+			grpcClient(matrix1, matrix2);
 			}
 		}
 
