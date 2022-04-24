@@ -74,7 +74,7 @@ public class FileUploadController {
 	public String handleFileUpload2(@RequestParam("res") MultipartFile file,
 			RedirectAttributes redirectAttributes) {
 		redirectAttributes.addFlashAttribute("message", "You pressed multiply button! BOYAAA");
-		
+		return "redirect:/";
 	}
 	
 	
