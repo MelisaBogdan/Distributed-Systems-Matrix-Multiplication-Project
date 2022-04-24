@@ -69,7 +69,12 @@ public class FileUploadController {
 		return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
 				"attachment; filename=\"" + file.getFilename() + "\"").body(file);
 	}
-
+	
+// 	@PostMapping("/results")
+// 	public String handleFileUpload(@RequestParam("file") MultipartFile file,
+// 			RedirectAttributes redirectAttributes) {
+		
+// 	}
 	
 	
 	@PostMapping("/")
@@ -112,13 +117,37 @@ public class FileUploadController {
 						"Matrix 1 from file is: " +" "+ matrixOne);
 				redirectAttributes.addFlashAttribute("matrix2",
 						"Matrix 2 from file is: " +" "+ matrixTwo);
+			grpcClient(matrixOne, matrixTwo);
 			}
 		}
 
 		return "redirect:/";
 	}
 
-	
+	public void grpcClient(int[][]a, int[][]b){
+                System.out.println("\n=====================================");
+//                 System.out.println("Deadline: " + deadline + " seconds"); 
+
+                // Different AWS private IP's
+                String aws1 = ""; 
+                String aws2 = ""; 
+                String aws3 = ""; 
+                String aws4 = ""; 
+                String aws5 = "";
+                String aws6 = ""; 
+                String aws7 = ""; 
+                String aws8 = "";
+		
+		// Different channels for each AWS 
+//                 ManagedChannel channel1 = ManagedChannelBuilder.forAddress(aws1, 9090).usePlaintext().build();  
+//                 ManagedChannel channel2 = ManagedChannelBuilder.forAddress(aws2, 9090).usePlaintext().build();  
+//                 ManagedChannel channel3 = ManagedChannelBuilder.forAddress(aws3, 9090).usePlaintext().build();  
+//                 ManagedChannel channel4 = ManagedChannelBuilder.forAddress(aws4, 9090).usePlaintext().build();  
+//                 ManagedChannel channel5 = ManagedChannelBuilder.forAddress(aws5, 9090).usePlaintext().build();  
+//                 ManagedChannel channel6 = ManagedChannelBuilder.forAddress(aws6, 9090).usePlaintext().build();  
+//                 ManagedChannel channel7 = ManagedChannelBuilder.forAddress(aws7, 9090).usePlaintext().build();  
+//                 ManagedChannel channel8 = ManagedChannelBuilder.forAddress(aws8, 9090).usePlaintext().build(); 
+	}
 	
 	
 	@ExceptionHandler(StorageFileNotFoundException.class)
