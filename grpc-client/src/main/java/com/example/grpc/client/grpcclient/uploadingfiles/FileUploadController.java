@@ -39,6 +39,9 @@ import java.util.Random;
 // channel imports
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+import com.example.grpc.server.grpcserver.MatrixRequest;
+import com.example.grpc.server.grpcserver.MatrixReply;
+import com.example.grpc.server.grpcserver.MatrixServiceGrpc;
 
 // import exceptions
 import com.example.grpc.client.grpcclient.exceptions.IncompatibleMatrixException;
