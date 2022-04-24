@@ -72,13 +72,21 @@ public class FileUploadController {
 				"attachment; filename=\"" + file.getFilename() + "\"").body(file);
 	}
 	
-	@PostMapping("/")
-	@RequestMapping(value="/handle", params="action=multiply")
-	public String handleFileUpload2( @RequestParam(value="action", required=true) String action, RedirectAttributes redirectAttributes) {
+// 	@PostMapping("/")
+// 	@RequestMapping(value="/handle", params="action=multiply")
+// 	public String handleFileUpload2( @RequestParam(value="action", required=true) String action, RedirectAttributes redirectAttributes) {
 		
-		if (action.equals("multiply")) {
+// 		if (action.equals("multiply")) {
+// 			redirectAttributes.addFlashAttribute("message", "You pressed multiply button! BOYAAA");   
+// 		}
+// 		return "redirect:/";
+// 	}
+	
+// 	@PostMapping("/")
+	@RequestMapping(value="/matrixMultip", params="multiply", method=RequestMethod.POST)
+	public String handleFileUpload2(RedirectAttributes redirectAttributes) {
+			print("should work");
 			redirectAttributes.addFlashAttribute("message", "You pressed multiply button! BOYAAA");   
-		}
 		return "redirect:/";
 	}
 	
