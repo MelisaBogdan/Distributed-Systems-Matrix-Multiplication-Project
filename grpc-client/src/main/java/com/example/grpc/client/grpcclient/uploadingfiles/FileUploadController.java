@@ -122,16 +122,16 @@ public class FileUploadController {
 				redirectAttributes.addFlashAttribute("message",
 				"Matrices in file " + file.getOriginalFilename() + " are not square!! ");
 			}else if (matrix1.length!=0 && matrix2.length!=0){
-// 				int n= matrix1.length;
-// 				while(n!=1)
+				int n= matrix1.length;
+				while(n!=1)
 				{
-// 					n = n/2;
-//             				if(n%2 != 0 && n != 1){
-// 						System.out.println("not power of 2");
-// 						redirectAttributes.addFlashAttribute("message",
-// 				"One (or both) of the matrices in file " + file.getOriginalFilename() + " have lengths that are not power of 2!! ");
-// 					}
-// 				}
+					n = n/2;
+            				if(n%2 != 0 && n != 1){
+						System.out.println("not power of 2");
+						redirectAttributes.addFlashAttribute("message",
+				"One (or both) of the matrices in file " + file.getOriginalFilename() + " have lengths that are not power of 2!! ");
+					}
+				}
 			}else{
 // 			all clear
 				redirectAttributes.addFlashAttribute("message",
