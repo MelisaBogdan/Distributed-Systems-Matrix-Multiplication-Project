@@ -170,7 +170,7 @@ public class FileUploadController {
 		return "redirect:/";
 	}
 	
-	public Bool checkIfPower2(int n){
+	public Boolean checkIfPower2(int n){
 		while(n!=1)
 		{
 			n = n/2;
