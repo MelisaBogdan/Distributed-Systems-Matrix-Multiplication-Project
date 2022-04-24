@@ -70,12 +70,12 @@ public class FileUploadController {
 				"attachment; filename=\"" + file.getFilename() + "\"").body(file);
 	}
 	
-	@PostMapping("/")
-	public String handleFileUpload2(@RequestParam("res") MultipartFile file,
-			RedirectAttributes redirectAttributes) {
-		redirectAttributes.addFlashAttribute("message", "You pressed multiply button! BOYAAA");
-		return "redirect:/";
-	}
+// 	@PostMapping("/")
+// 	public String handleFileUpload2(@RequestParam("res") MultipartFile file,
+// 			RedirectAttributes redirectAttributes) {
+// 		redirectAttributes.addFlashAttribute("message", "You pressed multiply button! BOYAAA");
+// 		return "redirect:/";
+// 	}
 	
 	
 	@PostMapping("/")
