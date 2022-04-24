@@ -125,7 +125,7 @@ public class FileUploadController {
 				redirectAttributes.addFlashAttribute("message",
 				"Matrices in file " + file.getOriginalFilename() + " are not power of 2!! ");
 			}else{
-// 			all clear
+			// All clear
 				redirectAttributes.addFlashAttribute("message",
 						"You successfully uploaded " +" "+ file.getOriginalFilename() +" !!");
 				redirectAttributes.addFlashAttribute("matrix1",
@@ -135,35 +135,6 @@ public class FileUploadController {
 			grpcClient(matrix1, matrix2);
 			}
 			
-			// CHECK IF SQUARE
-// 			if(matrix1.length != matrix1[0].length || matrix2.length != matrix2[0].length){
-// 				System.out.println("not square");
-// 				redirectAttributes.addFlashAttribute("message",
-// 				"Matrices in file " + file.getOriginalFilename() + " are not square!! ");
-				
-// 			// CHECK IF POWER OF 2
-// 			}else if (matrix1.length!=0 && matrix2.length!=0){
-// 				int n= matrix1.length;
-// 				while(n!=1){
-// 					n = n/2;
-//             				if(n%2 != 0 && n != 1){
-// 						System.out.println("not power of 2");
-// 						redirectAttributes.addFlashAttribute("message",
-// 				"One (or both) of the matrices in file " + file.getOriginalFilename() + " have lengths that are not power of 2!! ");
-// 					}
-// 				}
-						  
-// 			}else{
-// 				System.out.println("no exception");
-// // 			all clear
-// 				redirectAttributes.addFlashAttribute("message",
-// 						"You successfully uploaded " +" "+ file.getOriginalFilename() +" !!");
-// 				redirectAttributes.addFlashAttribute("matrix1",
-// 						"Matrix 1 from file is: " +" "+ matrixOne);
-// 				redirectAttributes.addFlashAttribute("matrix2",
-// 						"Matrix 2 from file is: " +" "+ matrixTwo);
-// 			grpcClient(matrix1, matrix2);
-// 			}
 		}
 		
 		
@@ -196,14 +167,23 @@ public class FileUploadController {
                 String aws8 = "";
 		
 		// Different channels for each AWS 
-//                 ManagedChannel channel1 = ManagedChannelBuilder.forAddress(aws1,  8080).usePlaintext().build();  
-//                 ManagedChannel channel2 = ManagedChannelBuilder.forAddress(aws2,  8080).usePlaintext().build();  
-//                 ManagedChannel channel3 = ManagedChannelBuilder.forAddress(aws3,  8080).usePlaintext().build();  
-//                 ManagedChannel channel4 = ManagedChannelBuilder.forAddress(aws4,  8080).usePlaintext().build();  
-//                 ManagedChannel channel5 = ManagedChannelBuilder.forAddress(aws5,  8080).usePlaintext().build();  
-//                 ManagedChannel channel6 = ManagedChannelBuilder.forAddress(aws6,  8080).usePlaintext().build();  
-//                 ManagedChannel channel7 = ManagedChannelBuilder.forAddress(aws7,  8080).usePlaintext().build();  
-//                 ManagedChannel channel8 = ManagedChannelBuilder.forAddress(aws8,  8080).usePlaintext().build(); 
+                ManagedChannel channel1 = ManagedChannelBuilder.forAddress(aws1,  8080).usePlaintext().build();  
+                ManagedChannel channel2 = ManagedChannelBuilder.forAddress(aws2,  8080).usePlaintext().build();  
+                ManagedChannel channel3 = ManagedChannelBuilder.forAddress(aws3,  8080).usePlaintext().build();  
+                ManagedChannel channel4 = ManagedChannelBuilder.forAddress(aws4,  8080).usePlaintext().build();  
+                ManagedChannel channel5 = ManagedChannelBuilder.forAddress(aws5,  8080).usePlaintext().build();  
+                ManagedChannel channel6 = ManagedChannelBuilder.forAddress(aws6,  8080).usePlaintext().build();  
+                ManagedChannel channel7 = ManagedChannelBuilder.forAddress(aws7,  8080).usePlaintext().build();  
+                ManagedChannel channel8 = ManagedChannelBuilder.forAddress(aws8,  8080).usePlaintext().build(); 
+		
+		MatrixServiceGrpc.MatrixServiceBlockingStub stub1 = MatrixServiceGrpc.newBlockingStub(channel1);
+                MatrixServiceGrpc.MatrixServiceBlockingStub stub2 = MatrixServiceGrpc.newBlockingStub(channel2);
+                MatrixServiceGrpc.MatrixServiceBlockingStub stub3 = MatrixServiceGrpc.newBlockingStub(channel3);
+                MatrixServiceGrpc.MatrixServiceBlockingStub stub4 = MatrixServiceGrpc.newBlockingStub(channel4);
+                MatrixServiceGrpc.MatrixServiceBlockingStub stub5 = MatrixServiceGrpc.newBlockingStub(channel5);
+                MatrixServiceGrpc.MatrixServiceBlockingStub stub6 = MatrixServiceGrpc.newBlockingStub(channel6);
+                MatrixServiceGrpc.MatrixServiceBlockingStub stub7 = MatrixServiceGrpc.newBlockingStub(channel7);
+                MatrixServiceGrpc.MatrixServiceBlockingStub stub8 = MatrixServiceGrpc.newBlockingStub(channel8);
 		
 // 		for (int i = 0; i < N; i++) { // row
 //                         for (int j = 0; j < N; j++) { // col
