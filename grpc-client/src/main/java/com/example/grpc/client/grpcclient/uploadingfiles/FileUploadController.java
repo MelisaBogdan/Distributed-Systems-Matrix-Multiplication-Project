@@ -36,6 +36,10 @@ import java.util.ArrayList;
 import java.text.DecimalFormat;
 import java.util.Random;
 
+// channel imports
+import io.grpc.ManagedChannel;
+import io.grpc.ManagedChannelBuilder;
+
 
 @Controller
 public class FileUploadController {
