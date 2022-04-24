@@ -40,6 +40,9 @@ import java.util.Random;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 
+// import exceptions
+import com.example.grpc.client.grpcclient.exceptions.IncompatibleMatrixException;
+
 
 @Controller
 public class FileUploadController {
@@ -113,6 +116,9 @@ public class FileUploadController {
 			
 			matrix1 = matrix_conversion(matrixOne);
 			matrix2 = matrix_conversion(matrixTwo);
+			if(matrix1.length != matrix2.length){
+			    throw new IncompatibleMatrixException("A and B must be the same size");
+			}
 			
 			// CHECK IF MATRIX FORMAT IS RIGHT (SQUARE)
 			if(matrix1.length != matrix1[0].length || matrix2.length != matrix2[0].length){
