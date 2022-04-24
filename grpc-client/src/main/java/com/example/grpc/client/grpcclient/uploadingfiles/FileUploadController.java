@@ -129,7 +129,7 @@ public class FileUploadController {
 				"Matrices in file " + file.getOriginalFilename() + " are not square!! ");
 				
 			// CHECK IF POWER OF 2
-			}else if (matrix1.length!=0 && matrix2.length!=0)
+			}else if (matrix1.length!=0 && matrix2.length!=0){
 				int n= matrix1.length;
 				while(n!=1){
 					n = n/2;
