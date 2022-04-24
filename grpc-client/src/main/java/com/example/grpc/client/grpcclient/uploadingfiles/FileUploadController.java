@@ -41,7 +41,7 @@ public class FileUploadController {
 	private final StorageService storageService;
 	private File destination;
 
-        @Value("${matrix.Symbols}")
+        @Value("${matrix.symbols}")
         private String matrixS;
 	
 
