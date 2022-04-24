@@ -75,7 +75,10 @@ public class FileUploadController {
 	@PostMapping("/")
 	@RequestMapping(value="/handle", params="action=multiply")
 	public String handleFileUpload2( @RequestParam(value="action", required=true) String action, RedirectAttributes redirectAttributes) {
-		redirectAttributes.addFlashAttribute("message", "You pressed multiply button! BOYAAA");
+		
+		if (action.equals("multiply")) {
+			redirectAttributes.addFlashAttribute("message", "You pressed multiply button! BOYAAA");   
+		}
 		return "redirect:/";
 	}
 	
@@ -124,9 +127,6 @@ public class FileUploadController {
 			}
 		}
 		
-		if (action.equals("multiply")) {
-			redirectAttributes.addFlashAttribute("message", "You pressed multiply button! BOYAAA");   
-		}
 		
 		return "redirect:/";
 	}
