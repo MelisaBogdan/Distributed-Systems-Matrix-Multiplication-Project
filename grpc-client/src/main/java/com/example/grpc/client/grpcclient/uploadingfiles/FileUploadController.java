@@ -85,7 +85,7 @@ public class FileUploadController {
 // 	@PostMapping("/")
 	@RequestMapping(value="/matrixMultip", params="multiply", method=RequestMethod.POST)
 	public String handleFileUpload2(RedirectAttributes redirectAttributes) {
-			print("should work");
+			System.out.println("should work");
 			redirectAttributes.addFlashAttribute("message", "You pressed multiply button! BOYAAA");   
 		return "redirect:/";
 	}
