@@ -170,14 +170,14 @@ public class FileUploadController {
                 String aws8 = "";
 		
 		// Different channels for each AWS 
-                ManagedChannel channel1 = ManagedChannelBuilder.forAddress(aws1,  8080).usePlaintext().build();  
-                ManagedChannel channel2 = ManagedChannelBuilder.forAddress(aws2,  8080).usePlaintext().build();  
-                ManagedChannel channel3 = ManagedChannelBuilder.forAddress(aws3,  8080).usePlaintext().build();  
-                ManagedChannel channel4 = ManagedChannelBuilder.forAddress(aws4,  8080).usePlaintext().build();  
-                ManagedChannel channel5 = ManagedChannelBuilder.forAddress(aws5,  8080).usePlaintext().build();  
-                ManagedChannel channel6 = ManagedChannelBuilder.forAddress(aws6,  8080).usePlaintext().build();  
-                ManagedChannel channel7 = ManagedChannelBuilder.forAddress(aws7,  8080).usePlaintext().build();  
-                ManagedChannel channel8 = ManagedChannelBuilder.forAddress(aws8,  8080).usePlaintext().build(); 
+                ManagedChannel channel1 = ManagedChannelBuilder.forAddress(aws1,  8082).usePlaintext().build();  
+                ManagedChannel channel2 = ManagedChannelBuilder.forAddress(aws2,  8082).usePlaintext().build();  
+                ManagedChannel channel3 = ManagedChannelBuilder.forAddress(aws3,  8082).usePlaintext().build();  
+                ManagedChannel channel4 = ManagedChannelBuilder.forAddress(aws4,  8082).usePlaintext().build();  
+                ManagedChannel channel5 = ManagedChannelBuilder.forAddress(aws5,  8082).usePlaintext().build();  
+                ManagedChannel channel6 = ManagedChannelBuilder.forAddress(aws6,  8082).usePlaintext().build();  
+                ManagedChannel channel7 = ManagedChannelBuilder.forAddress(aws7,  8082).usePlaintext().build();  
+                ManagedChannel channel8 = ManagedChannelBuilder.forAddress(aws8,  8082).usePlaintext().build(); 
 		
 		MatrixServiceGrpc.MatrixServiceBlockingStub stub1 = MatrixServiceGrpc.newBlockingStub(channel1);
                 MatrixServiceGrpc.MatrixServiceBlockingStub stub2 = MatrixServiceGrpc.newBlockingStub(channel2);
