@@ -32,8 +32,14 @@ public class PingPongEndpoint {
 // 	public String add() {
 // 		return grpcClientService.add();
 // 	}
+	
 	@GetMapping("/")
 	public String upload(Model model) {
         	return "uploadForm";
+	}
+	
+	@GetMapping("/results")
+	public String upload(Model model) {
+        	return "results";
 	}
 }
