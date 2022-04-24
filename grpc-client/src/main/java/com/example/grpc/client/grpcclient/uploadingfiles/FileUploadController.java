@@ -116,15 +116,11 @@ public class FileUploadController {
 			
 			matrix1 = matrix_conversion(matrixOne);
 			matrix2 = matrix_conversion(matrixTwo);
-			if(matrix1.length != matrix2.length){
-// 			    throw new IncompatibleMatrixException("A and B must be the same size");
-				System.out.println("not same length");
-			}else{
-				System.out.println("same length");
-			}
+
 			
 			// CHECK IF SQUARE
 			if(matrix1.length != matrix1[0].length || matrix2.length != matrix2[0].length){
+				System.out.println("not square");
 				redirectAttributes.addFlashAttribute("message",
 				"Matrices in file " + file.getOriginalFilename() + " are not square!! ");
 				
@@ -134,12 +130,14 @@ public class FileUploadController {
 				while(n!=1){
 					n = n/2;
             				if(n%2 != 0 && n != 1){
+						System.out.println("not power of 2");
 						redirectAttributes.addFlashAttribute("message",
 				"One (or both) of the matrices in file " + file.getOriginalFilename() + " have lengths that are not power of 2!! ");
 					}
 				}
 						  
 			}else{
+				System.out.println("no exception");
 // 			all clear
 				redirectAttributes.addFlashAttribute("message",
 						"You successfully uploaded " +" "+ file.getOriginalFilename() +" !!");
