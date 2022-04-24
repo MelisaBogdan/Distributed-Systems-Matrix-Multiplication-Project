@@ -71,7 +71,7 @@ public class FileUploadController {
 	}
 	
 	@PostMapping("/")
-	public String handleFileUpload(@RequestParam("res") MultipartFile file,
+	public String handleFileUpload2(@RequestParam("res") MultipartFile file,
 			RedirectAttributes redirectAttributes) {
 		redirectAttributes.addFlashAttribute("message", "You pressed multiply button! BOYAAA");
 		
