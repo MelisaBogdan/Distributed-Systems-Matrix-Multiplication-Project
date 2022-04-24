@@ -103,10 +103,10 @@ public class FileUploadController {
 			int[][] matrix2 = matrix_conversion(matrixTwo);
 			
 			// CHECK IF MATRIX FORMAT IS RIGHT (SQUARE)
-			if(matrixA.length != matrixA[0].length || matrixB.length != matrixB[0].length){
+			if(matrix1.length != matrix1[0].length || matrix2.length != matrix2[0].length){
 				redirectAttributes.addFlashAttribute("message",
 				"Matrices in file " + file.getOriginalFilename() + " are not square!! ");
-			}else if(matrixA.length % 4 !=0 || matrixB.length % 4 !=0 ){
+			}else if(matrix1.length % 4 !=0 || matrix2.length % 4 !=0 ){
 				redirectAttributes.addFlashAttribute("message",
 				"Matrices in file " + file.getOriginalFilename() + " are not accepted (length not multiple by 4) !! ");
 			}else{
