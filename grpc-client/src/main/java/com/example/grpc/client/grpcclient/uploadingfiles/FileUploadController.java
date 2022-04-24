@@ -39,7 +39,7 @@ import java.util.Random;
 public class FileUploadController {
 
 	private final StorageService storageService;
-	private File dest;
+	private File destination;
 
         @Value("${matrix.S}")
         private String matrixS;
