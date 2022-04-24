@@ -72,18 +72,17 @@ public class FileUploadController {
 				"attachment; filename=\"" + file.getFilename() + "\"").body(file);
 	}
 	
-// 	@PostMapping("/")
-// 	public String handleFileUpload2(@RequestParam("res") MultipartFile file,
-// 			RedirectAttributes redirectAttributes) {
-// 		redirectAttributes.addFlashAttribute("message", "You pressed multiply button! BOYAAA");
-// 		return "redirect:/";
-// 	}
+	@PostMapping("/")
+	@RequestMapping(value="/handle", params="action=multiply")
+	public String handleFileUpload2( @RequestParam(value="action", required=true) String action, RedirectAttributes redirectAttributes) {
+		redirectAttributes.addFlashAttribute("message", "You pressed multiply button! BOYAAA");
+		return "redirect:/";
+	}
 	
 	
 	@PostMapping("/")
-	@RequestMapping(value="/handleFileUpload", params="action=multiply")
 	public String handleFileUpload(@RequestParam("file") MultipartFile file,
-			RedirectAttributes redirectAttributes, @RequestParam(value="action", required=true) String action) {
+			RedirectAttributes redirectAttributes) {
 	
 		String file_path = "/home/melisa_bogdan/CW-DS";
 		destination = new File(file_path + '/' + file.getOriginalFilename());
