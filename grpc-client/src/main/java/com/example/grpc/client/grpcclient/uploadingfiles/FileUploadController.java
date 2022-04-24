@@ -79,9 +79,10 @@ public class FileUploadController {
 	
 	
 	@PostMapping("/")
+	@RequestMapping(value="/handleFileUpload", method=RequestMethod.POST)
 	public String handleFileUpload(@RequestParam("file") MultipartFile file,
-			RedirectAttributes redirectAttributes) {
-
+			RedirectAttributes redirectAttributes, @RequestParam(value="action", required=true) String action) {
+	
 		String file_path = "/home/melisa_bogdan/CW-DS";
 		destination = new File(file_path + '/' + file.getOriginalFilename());
 		try { 
@@ -121,7 +122,11 @@ public class FileUploadController {
 			grpcClient(matrix1, matrix2);
 			}
 		}
-
+		
+		if (action.equals("multiply")) {
+			redirectAttributes.addFlashAttribute("message", "You pressed multiply button! BOYAAA");   
+		}
+		
 		return "redirect:/";
 	}
 
