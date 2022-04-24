@@ -135,7 +135,6 @@ public class FileUploadController {
 
 	public void grpcClient(int[][]a, int[][]b){
                 System.out.println("\n=====================================");
-//                 System.out.println("Deadline: " + deadline + " seconds"); 
 
                 // Different AWS private IP's
                 String aws1 = ""; 
@@ -148,14 +147,37 @@ public class FileUploadController {
                 String aws8 = "";
 		
 		// Different channels for each AWS 
-//                 ManagedChannel channel1 = ManagedChannelBuilder.forAddress(aws1, 9090).usePlaintext().build();  
-//                 ManagedChannel channel2 = ManagedChannelBuilder.forAddress(aws2, 9090).usePlaintext().build();  
-//                 ManagedChannel channel3 = ManagedChannelBuilder.forAddress(aws3, 9090).usePlaintext().build();  
-//                 ManagedChannel channel4 = ManagedChannelBuilder.forAddress(aws4, 9090).usePlaintext().build();  
-//                 ManagedChannel channel5 = ManagedChannelBuilder.forAddress(aws5, 9090).usePlaintext().build();  
-//                 ManagedChannel channel6 = ManagedChannelBuilder.forAddress(aws6, 9090).usePlaintext().build();  
-//                 ManagedChannel channel7 = ManagedChannelBuilder.forAddress(aws7, 9090).usePlaintext().build();  
-//                 ManagedChannel channel8 = ManagedChannelBuilder.forAddress(aws8, 9090).usePlaintext().build(); 
+                ManagedChannel channel1 = ManagedChannelBuilder.forAddress(aws1, 9090).usePlaintext().build();  
+                ManagedChannel channel2 = ManagedChannelBuilder.forAddress(aws2, 9090).usePlaintext().build();  
+                ManagedChannel channel3 = ManagedChannelBuilder.forAddress(aws3, 9090).usePlaintext().build();  
+                ManagedChannel channel4 = ManagedChannelBuilder.forAddress(aws4, 9090).usePlaintext().build();  
+                ManagedChannel channel5 = ManagedChannelBuilder.forAddress(aws5, 9090).usePlaintext().build();  
+                ManagedChannel channel6 = ManagedChannelBuilder.forAddress(aws6, 9090).usePlaintext().build();  
+                ManagedChannel channel7 = ManagedChannelBuilder.forAddress(aws7, 9090).usePlaintext().build();  
+                ManagedChannel channel8 = ManagedChannelBuilder.forAddress(aws8, 9090).usePlaintext().build(); 
+		
+// 		for (int i = 0; i < N; i++) { // row
+//                         for (int j = 0; j < N; j++) { // col
+//                             for (int k = 0; k < N; k++) {
+                                
+//                                 MatrixReply temp=stubss.get(stubs_index).multiplyBlock(MatrixRequest.newBuilder().setA(a[i][k]).setB(b[k][j]).build());
+//                                 if(stubs_index == number_of_servers_in_use-1) stubs_index = 0;
+//                                 else stubs_index++;
+//                                 MatrixReply temp2=stubss.get(stubs_index).addBlock(MatrixRequest.newBuilder().setA(c[i][j]).setB(temp.getC()).build());
+//                                 c[i][j] = temp2.getC();
+//                                 if(stubs_index == number_of_servers_in_use-1) stubs_index = 0;
+//                                 else stubs_index++;
+//                             }
+//                         }
+//                     }
+
+//                     // Print result matrix
+//                     for (int i = 0; i < a.length; i++) {
+//                         for (int j = 0; j < a[0].length; j++) {
+//                             System.out.print(c[i][j] + " ");
+//                         }
+//                         System.out.println("");
+//                     }
 	}
 	
 	
