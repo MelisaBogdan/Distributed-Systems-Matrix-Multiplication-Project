@@ -184,8 +184,8 @@ public class FileUploadController {
 	
 	public void grpcClient(int[][]a, int[][]b){
                 System.out.println("\n=====================================");
-
-                // Different AWS private IP's
+// 	deadline based scaling
+                // at least 8 channels with the target's address and port number.
                 String aws1 = ""; 
                 String aws2 = ""; 
                 String aws3 = ""; 
