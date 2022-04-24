@@ -42,6 +42,8 @@ public class FileUploadController {
 
 	private final StorageService storageService;
 	private File destination;
+	public int[][] matrix1;
+	public int[][] matrix2;
 
         @Value("${matrix.symbols}")
         private String matrixS;
@@ -113,8 +115,8 @@ public class FileUploadController {
 			String matrixOne= get_string_matrix(destination).split(matrixS)[0];
 			String matrixTwo = get_string_matrix(destination).split(matrixS)[1];
 			
-			int[][] matrix1 = matrix_conversion(matrixOne);
-			int[][] matrix2 = matrix_conversion(matrixTwo);
+			matrix1 = matrix_conversion(matrixOne);
+			matrix2 = matrix_conversion(matrixTwo);
 			
 			// CHECK IF MATRIX FORMAT IS RIGHT (SQUARE)
 			if(matrix1.length != matrix1[0].length || matrix2.length != matrix2[0].length){
