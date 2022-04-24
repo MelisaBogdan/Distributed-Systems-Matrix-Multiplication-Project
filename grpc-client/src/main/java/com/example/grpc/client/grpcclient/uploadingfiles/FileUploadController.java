@@ -41,8 +41,8 @@ public class FileUploadController {
 	private final StorageService storageService;
 	private File dest;
 
-        @Value("${matrix.symbols}")
-        private String matrixSymbols;
+        @Value("${matrix.S}")
+        private String matrixS;
 	
 
 	@Autowired
@@ -76,10 +76,10 @@ public class FileUploadController {
 	public String handleFileUpload(@RequestParam("file") MultipartFile file,
 			RedirectAttributes redirectAttributes) {
 
-		String filePathServer = "/home/melisa_bogdan/CW-DS";
-		dest = new File(filePathServer + '/' + file.getOriginalFilename());
+		String file_path = "/home/melisa_bogdan/CW-DS";
+		destination = new File(file_path + '/' + file.getOriginalFilename());
 		try { 
-			file.transferTo(dest); 
+			file.transferTo(destination); 
 		} catch (Exception e) { 
 			redirectAttributes.addFlashAttribute("message",
 					"File is not provided, please add a file!! " + file.getOriginalFilename() + "!!");
@@ -91,11 +91,11 @@ public class FileUploadController {
 				"File " + file.getOriginalFilename() + " is empty! Upload again. ");
            	}else {
 			
-			String matrixOne= txt2String(dest).split(matrixSymbols)[0];
-			String matrixTwo = txt2String(dest).split(matrixSymbols)[1];
+			String matrixOne= get_string_matrix(destination).split(matrixS)[0];
+			String matrixTwo = get_string_matrix(destination).split(matrixS)[1];
 			
-			int[][] matrixA = convertToMatrix(matrixOne);
-			int[][] matrixB = convertToMatrix(matrixTwo);
+			int[][] matrixA = matrix_conversion(matrixOne);
+			int[][] matrixB = matrix_conversion(matrixTwo);
 			
 			// CHECK IF MATRIX FORMAT IS RIGHT (SQUARE)
 			if(matrixA.length != matrixA[0].length || matrixB.length != matrixB[0].length){
@@ -127,7 +127,7 @@ public class FileUploadController {
 	}
 	
 // 	// Get matrix string from the file
-        public static String txt2String(File file) {
+        public static String get_string_matrix(File file) {
                 StringBuilder result = new StringBuilder();
                 try {
                     BufferedReader br = new BufferedReader(new FileReader(file));
@@ -152,7 +152,7 @@ public class FileUploadController {
 // 		return result.toString();
         }
 	
-	 public static int[][] convertToMatrix(String m){
+	 public static int[][] matrix_conversion(String m){
 
                 // split matrices row and col number from actual matrix data
                 String[] data = m.split(";"); // get matrix data 
