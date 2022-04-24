@@ -118,9 +118,9 @@ public class FileUploadController {
 			matrix2 = matrix_conversion(matrixTwo);
 			if(matrix1.length != matrix2.length){
 // 			    throw new IncompatibleMatrixException("A and B must be the same size");
-				print("not same length");
+				System.out.println("not same length");
 			}else{
-				print("same length");
+				System.out.println("same length");
 			}
 			
 			// CHECK IF MATRIX FORMAT IS RIGHT (SQUARE)
