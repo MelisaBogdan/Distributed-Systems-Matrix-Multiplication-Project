@@ -81,7 +81,7 @@ public class FileUploadController {
 	
 	
 	@PostMapping("/")
-	@RequestMapping(value="/handleFileUpload", method=RequestMethod.post, params="action=multiply")
+	@RequestMapping(value="/handleFileUpload", params="action=multiply")
 	public String handleFileUpload(@RequestParam("file") MultipartFile file,
 			RedirectAttributes redirectAttributes, @RequestParam(value="action", required=true) String action) {
 	
