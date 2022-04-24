@@ -170,16 +170,15 @@ public class FileUploadController {
 		return "redirect:/";
 	}
 	
-	public checkIfPower2(int n){
+	public Bool checkIfPower2(int n){
 		while(n!=1)
 		{
 			n = n/2;
             		if(n%2 != 0 && n != 1){
 				System.out.println("not power of 2");
-				redirectAttributes.addFlashAttribute("message",
-			"One (or both) of the matrices in file " + file.getOriginalFilename() + " have lengths that are not power of 2!! ");
-			}
+				return False;
 		}
+			return True;
 	}
 	
 	public void grpcClient(int[][]a, int[][]b){
