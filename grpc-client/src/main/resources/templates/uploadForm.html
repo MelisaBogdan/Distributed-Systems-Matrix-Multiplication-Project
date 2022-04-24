@@ -22,10 +22,18 @@
 			</table>
 		</form>
 		
-		
-		<form action="#" data-th-action="@{/action/multiply}" method="post" enctype="multipart/form-data">
-		    <button type="submit" name="action" value="multiply">MULTIPLY</button>
+		<form method="POST" enctype="multipart/form-data" action="/">
+			
+			<table>
+				<tr><td> Press button to multiply: </td></tr>
+				<tr><td></td><td><input type="submit" value="multiply" /></td></tr>
+			</table>
 		</form>
+		
+<!-- 		<form action="#" data-th-action="@{/action/multiply}" method="post" enctype="multipart/form-data">
+		    <button type="submit" name="action" value="multiply">MULTIPLY</button>
+		</form> 
+-->
 		
 <!-- 		<form method="POST" enctype="multipart/form-data" action="/" >
 			<table>
