@@ -176,10 +176,10 @@ public class FileUploadController {
 			n = n/2;
             		if(n%2 != 0 && n != 1){
 				System.out.println("not power of 2");
-				return False;
+				return false;
 			}
 		}
-		return True;
+		return true;
 	}
 	
 	public void grpcClient(int[][]a, int[][]b){
