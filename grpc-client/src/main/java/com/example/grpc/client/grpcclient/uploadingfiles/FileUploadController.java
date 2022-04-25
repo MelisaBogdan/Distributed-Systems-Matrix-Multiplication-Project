@@ -192,31 +192,32 @@ public class FileUploadController {
 		
 		ArrayList<MatrixServiceGrpc.MatrixServiceBlockingStub> stubss = new ArrayList<MatrixServiceGrpc.MatrixServiceBlockingStub>();
                 stubss.add(stub1);
-//                 stubss.add(stub2);
-//                 stubss.add(stub3);
-//                 stubss.add(stub4);
-//                 stubss.add(stub5);
-//                 stubss.add(stub6);
-//                 stubss.add(stub7);
-//                 stubss.add(stub8);
+                stubss.add(stub2);
+                stubss.add(stub3);
+                stubss.add(stub4);
+                stubss.add(stub5);
+                stubss.add(stub6);
+                stubss.add(stub7);
+                stubss.add(stub8);
 		
 		int stubs_index = 0;
 
 //                 // Length row
-//                 int N = a.length;
+                int N = a.length;
 
 //                 // use a random stub from the stub array to calculate footprint 
-//                 DecimalFormat df = new DecimalFormat("#.##"); 
-//                 Random r = new Random();
-//                 int low = 0;
-//                 int high = 8;
-//                 int random = r.nextInt(high-low) + low;
+                DecimalFormat df = new DecimalFormat("#.##"); 
+                Random r = new Random();
+                int low = 0;
+                int high = 8;
+                int random = r.nextInt(high-low) + low;
 //                 double footprint = Double.valueOf(df.format(footPrint(stubss.get(random), a[0][0], a[N-1][N-1])));
                 
 //                 // Get execution time and number of needed servers
 //                 int number_of_calls = (int) Math.pow(N, 2);
 //                 double execution_time = number_of_calls*footprint;
 //                 double number_of_server_needed = execution_time/10;
+		double number_of_server_needed = 1.00;
 
 
 //                 // if less than one server needed provide one server
@@ -224,10 +225,10 @@ public class FileUploadController {
 //                 // if more than one but less than 2 server needed use 2 servers
 //                 if(number_of_server_needed <2.00 && number_of_server_needed > 1.00) number_of_server_needed = 2.00;
                 
-//                 System.out.println("Number of server needed: " + number_of_server_needed);
-//                 System.out.println("=====================================");
-//                 System.out.println("Footprint: " + footprint + " seconds");
-//                 System.out.println("=====================================");
+                System.out.println("Number of server needed: " + number_of_server_needed);
+                System.out.println("=====================================");
+                System.out.println("Footprint: " + footprint + " seconds");
+               
                 
                 
 
