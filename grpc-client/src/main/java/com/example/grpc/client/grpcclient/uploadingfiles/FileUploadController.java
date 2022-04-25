@@ -254,9 +254,9 @@ public class FileUploadController {
 //                 // use a random stub from the stub array to calculate footprint 
                 DecimalFormat d = new DecimalFormat("#.#"); 
                 Random r = new Random();
-//                 int low = 0;
-//                 int high = 8;
-                int rr = r.nextInt(8); 
+                int low = 0;
+                int high = 8;
+                int rr = r.nextInt(high-low) + low; 
 // 			+ low;
 		
 		// calculate the footprint
