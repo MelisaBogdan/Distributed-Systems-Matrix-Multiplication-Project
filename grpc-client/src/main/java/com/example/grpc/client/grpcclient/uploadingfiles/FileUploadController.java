@@ -200,83 +200,84 @@ public class FileUploadController {
 		
 		int stubs_index = 0;
 
-                // Length row
-                int N = a.length;
+//                 // Length row
+//                 int N = a.length;
 
-                // use a random stub from the stub array to calculate footprint 
-                DecimalFormat df = new DecimalFormat("#.##"); 
-                Random r = new Random();
-                int low = 0;
-                int high = 8;
-                int random = r.nextInt(high-low) + low;
-                double footprint = Double.valueOf(df.format(footPrint(stubss.get(random), a[0][0], a[N-1][N-1])));
+//                 // use a random stub from the stub array to calculate footprint 
+//                 DecimalFormat df = new DecimalFormat("#.##"); 
+//                 Random r = new Random();
+//                 int low = 0;
+//                 int high = 8;
+//                 int random = r.nextInt(high-low) + low;
+//                 double footprint = Double.valueOf(df.format(footPrint(stubss.get(random), a[0][0], a[N-1][N-1])));
                 
-                // Get execution time and number of needed servers
-                int number_of_calls = (int) Math.pow(N, 2);
-                double execution_time = number_of_calls*footprint;
-                double number_of_server_needed = execution_time/10;
+//                 // Get execution time and number of needed servers
+//                 int number_of_calls = (int) Math.pow(N, 2);
+//                 double execution_time = number_of_calls*footprint;
+//                 double number_of_server_needed = execution_time/10;
 
 
-                // if less than one server needed provide one server
-                if (number_of_server_needed < 1.00 ) number_of_server_needed = 1.00;
-                // if more than one but less than 2 server needed use 2 servers
-                if(number_of_server_needed <2.00 && number_of_server_needed > 1.00) number_of_server_needed = 2.00;
+//                 // if less than one server needed provide one server
+//                 if (number_of_server_needed < 1.00 ) number_of_server_needed = 1.00;
+//                 // if more than one but less than 2 server needed use 2 servers
+//                 if(number_of_server_needed <2.00 && number_of_server_needed > 1.00) number_of_server_needed = 2.00;
                 
-                System.out.println("Number of server needed: " + number_of_server_needed);
-                System.out.println("=====================================");
-                System.out.println("Footprint: " + footprint + " seconds");
-                System.out.println("=====================================");
+//                 System.out.println("Number of server needed: " + number_of_server_needed);
+//                 System.out.println("=====================================");
+//                 System.out.println("Footprint: " + footprint + " seconds");
+//                 System.out.println("=====================================");
                 
                 
 
-                if((number_of_server_needed > 8) ){
-                        // If more than 8 servers needed to the operation to 8 servers and if the deadline is unrealistick provide 
-                        // appropriate mesage and quit 
-                        number_of_server_needed = 8;
-                        if(deadline <= 50){
-                                System.out.println("Footprint: " + footprint + "\nFootprint x number of calls: " + (footprint*number_of_calls));
-                                System.out.println("The load exceeds the deadline, multiplication cannot be done!");
-                                return;
-                        }
-                }
+//                 if((number_of_server_needed > 8) ){
+//                         // If more than 8 servers needed to the operation to 8 servers and if the deadline is unrealistick provide 
+//                         // appropriate mesage and quit 
+//                         number_of_server_needed = 8;
+//                         if(deadline <= 50){
+//                                 System.out.println("Footprint: " + footprint + "\nFootprint x number of calls: " + (footprint*number_of_calls));
+//                                 System.out.println("The load exceeds the deadline, multiplication cannot be done!");
+//                                 return;
+//                         }
+//                 }
 
-                int number_of_servers_in_use = (int) Math.round(number_of_server_needed);
-                System.out.println("Number of used servers: " + number_of_servers_in_use);
-                System.out.println("=====================================\n");
-                int c[][] = new int[N][N];
+//                 int number_of_servers_in_use = (int) Math.round(number_of_server_needed);
+//                 System.out.println("Number of used servers: " + number_of_servers_in_use);
+//                 System.out.println("=====================================\n");
+//                 int c[][] = new int[N][N];
 
-                // Start the matrix calculation and print the result onto client 
-                for (int i = 0; i < N; i++) { // row
-                        for (int j = 0; j < N; j++) { // col
-                            for (int k = 0; k < N; k++) {
+//                 // Start the matrix calculation and print the result onto client 
+//                 for (int i = 0; i < N; i++) { // row
+//                         for (int j = 0; j < N; j++) { // col
+//                             for (int k = 0; k < N; k++) {
                                 
-                                MatrixReply temp=stubss.get(stubs_index).multiplyBlock(MatrixRequest.newBuilder().setA(a[i][k]).setB(b[k][j]).build());
-                                if(stubs_index == number_of_servers_in_use-1) stubs_index = 0;
-                                else stubs_index++;
-                                MatrixReply temp2=stubss.get(stubs_index).addBlock(MatrixRequest.newBuilder().setA(c[i][j]).setB(temp.getC()).build());
-                                c[i][j] = temp2.getC();
-                                if(stubs_index == number_of_servers_in_use-1) stubs_index = 0;
-                                else stubs_index++;
-                            }
-                        }
-                    }
+//                                 MatrixReply temp=stubss.get(stubs_index).multiplyBlock(MatrixRequest.newBuilder().setA(a[i][k]).setB(b[k][j]).build());
+//                                 if(stubs_index == number_of_servers_in_use-1) stubs_index = 0;
+//                                 else stubs_index++;
+//                                 MatrixReply temp2=stubss.get(stubs_index).addBlock(MatrixRequest.newBuilder().setA(c[i][j]).setB(temp.getC()).build());
+//                                 c[i][j] = temp2.getC();
+//                                 if(stubs_index == number_of_servers_in_use-1) stubs_index = 0;
+//                                 else stubs_index++;
+//                             }
+//                         }
+//                     }
 
-                    // Print result matrix
-                    for (int i = 0; i < a.length; i++) {
-                        for (int j = 0; j < a[0].length; j++) {
-                            System.out.print(c[i][j] + " ");
-                        }
-                        System.out.println("");
-                    }
-                // Close channels
-                channel1.shutdown();
-                channel2.shutdown();
-                channel3.shutdown();
-                channel4.shutdown();
-                channel5.shutdown();
-                channel6.shutdown();
-                channel7.shutdown();
-                channel8.shutdown();
+//                     // Print result matrix
+//                     for (int i = 0; i < a.length; i++) {
+//                         for (int j = 0; j < a[0].length; j++) {
+//                             System.out.print(c[i][j] + " ");
+//                         }
+//                         System.out.println("");
+//                     }
+		
+//                 // Close channels
+//                 channel1.shutdown();
+//                 channel2.shutdown();
+//                 channel3.shutdown();
+//                 channel4.shutdown();
+//                 channel5.shutdown();
+//                 channel6.shutdown();
+//                 channel7.shutdown();
+//                 channel8.shutdown();
                 
 	}
 	
