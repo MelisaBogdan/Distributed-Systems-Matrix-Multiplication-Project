@@ -176,10 +176,10 @@ public class FileUploadController {
                 ManagedChannel channel6 = ManagedChannelBuilder.forAddress(serverAddress,  9090).usePlaintext().build();  
                 ManagedChannel channel7 = ManagedChannelBuilder.forAddress(serverAddress,  9090).usePlaintext().build();  
                 ManagedChannel channel8 = ManagedChannelBuilder.forAddress(serverAddress,  9090).usePlaintext().build(); 
-		ManagedChannel channel9 = ManagedChannelBuilder.forAddress(serverAddress,  9090).usePlaintext().build();  
-                ManagedChannel channel10 = ManagedChannelBuilder.forAddress(serverAddress,  9090).usePlaintext().build();  
-                ManagedChannel channel11 = ManagedChannelBuilder.forAddress(serverAddress,  9090).usePlaintext().build();  
-                ManagedChannel channel12 = ManagedChannelBuilder.forAddress(serverAddress,  9090).usePlaintext().build(); 
+// 		ManagedChannel channel9 = ManagedChannelBuilder.forAddress(serverAddress,  9090).usePlaintext().build();  
+//                 ManagedChannel channel10 = ManagedChannelBuilder.forAddress(serverAddress,  9090).usePlaintext().build();  
+//                 ManagedChannel channel11 = ManagedChannelBuilder.forAddress(serverAddress,  9090).usePlaintext().build();  
+//                 ManagedChannel channel12 = ManagedChannelBuilder.forAddress(serverAddress,  9090).usePlaintext().build(); 
 		
 		MatrixServiceGrpc.MatrixServiceBlockingStub stub1 = MatrixServiceGrpc.newBlockingStub(channel1);
                 MatrixServiceGrpc.MatrixServiceBlockingStub stub2 = MatrixServiceGrpc.newBlockingStub(channel2);
@@ -200,10 +200,10 @@ public class FileUploadController {
                 stubs_list.add(stub6);
                 stubs_list.add(stub7);
                 stubs_list.add(stub8);
-		stubs_list.add(stub9);
-                stubs_list.add(stub10);
-                stubs_list.add(stub11);
-                stubs_list.add(stub12);
+// 		stubs_list.add(stub9);
+//                 stubs_list.add(stub10);
+//                 stubs_list.add(stub11);
+//                 stubs_list.add(stub12);
 		
 		// stub index in array list
 		int index = 0;
@@ -218,7 +218,7 @@ public class FileUploadController {
                 DecimalFormat d = new DecimalFormat("#.#"); 
                 Random r = new Random();
                 int low = 0;
-                int high = 12;
+                int high = 8;
                 int rr = r.nextInt(high-low) + low; 
 // 			+ low;
 		
