@@ -253,15 +253,18 @@ public class FileUploadController {
 		
 
                     // Print result matrix
+		String s="";
 		for (int i = 0; i < a.length; i++) {
                         for (int j = 0; j < a[0].length; j++) {
                             System.out.print(c[i][j] + " ");
+			    s= s+ " "+c[i][j];
                         }
                         System.out.println("");
                     }
+		
 		int l= c.length;
 		redirectAttributes.addFlashAttribute("resultMult",
-						"Multiplication result is:" +" "+ c.toString(l, l) +" !!");
+						"Multiplication result is:" +" "+ s +" !!");
 //                 // Close channels
                 channel1.shutdown();
                 channel2.shutdown();
