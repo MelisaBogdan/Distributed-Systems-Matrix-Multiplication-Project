@@ -344,8 +344,8 @@ public class FileUploadController {
                 int[][] matrix1 = new int[r][c];
                 int matrix1_index = 0; 
                  
-                for(int i = 0; i < row; i++){
-                        for(int j = 0; j < col; j++){
+                for(int i = 0; i < r; i++){
+                        for(int j = 0; j < c; j++){
                                 matrix1[i][j] = Integer.parseInt( matrix_temp[matrix1_index].replaceAll("[\\n\\t ]", ""));
                                 matrix1_index++;
                         }
