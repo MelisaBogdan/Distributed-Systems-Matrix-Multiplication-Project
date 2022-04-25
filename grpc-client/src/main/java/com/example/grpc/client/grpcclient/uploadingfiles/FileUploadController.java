@@ -99,51 +99,54 @@ public class FileUploadController {
 	
 	@PostMapping("/")
 	public String handleFileUpload(@RequestParam("file") MultipartFile file,
-			RedirectAttributes redirectAttributes) {
+			RedirectAttributes redirectAttributes) throws IOException{
 	
-		String file_path = "/home/melisa_bogdan/CW-DS";
-		destination = new File(file_path + '/' + file.getOriginalFilename());
-		try { 
-			file.transferTo(destination); 
-		} catch (Exception e) { 
-			redirectAttributes.addFlashAttribute("message",
-					"File is not provided, please add a file!! " + file.getOriginalFilename() + "!!");
-		
-		}
-		// CHECK IF FILE EMPTY
-		if (file.isEmpty()) {
-            		 redirectAttributes.addFlashAttribute("message",
-				"File " + file.getOriginalFilename() + " is empty! Upload again. ");
-           	}else {
-			
-			String matrixOne= get_string_matrix(destination).split(matrixS)[0];
-			String matrixTwo = get_string_matrix(destination).split(matrixS)[1];
-			
-			matrix1 = matrix_conversion(matrixOne);
-			matrix2 = matrix_conversion(matrixTwo);
+		try{
+			String file_path = "/home/melisa_bogdan/CW-DS";
+			destination = new File(file_path + '/' + file.getOriginalFilename());
+			try { 
+				file.transferTo(destination); 
+			} catch (Exception e) { 
+				redirectAttributes.addFlashAttribute("message",
+						"File is not provided, please add a file!! " + file.getOriginalFilename() + "!!");
 
-			// CHECK IF SQUARE
-			if(matrix1.length != matrix1[0].length || matrix2.length != matrix2[0].length){
-				redirectAttributes.addFlashAttribute("message",
-				"Matrices in file " + file.getOriginalFilename() + " are not square!! ");
-			}else if (checkIfPower2(matrix2.length)== false){
-				redirectAttributes.addFlashAttribute("message",
-				"Matrices in file " + file.getOriginalFilename() + " are not power of 2!! ");
-			}else{
-			// All clear
-// 				int[][] slice = getSliceOfArray(matrix1, 2, matrix1.length + 1);
-				redirectAttributes.addFlashAttribute("message",
-						"You successfully uploaded " +" "+ file.getOriginalFilename() +" !!");
-				redirectAttributes.addFlashAttribute("matrix1",
-						"Matrix 1 from file is: " +" "+ matrixOne);
-				redirectAttributes.addFlashAttribute("matrix2",
-						"Matrix 2 from file is: " +" "+ matrixTwo);
-			grpcClient(matrix1, matrix2, redirectAttributes);
 			}
-			
+			// CHECK IF FILE EMPTY
+			if (file.isEmpty()) {
+				 redirectAttributes.addFlashAttribute("message",
+					"File " + file.getOriginalFilename() + " is empty! Upload again. ");
+			}else {
+
+				String matrixOne= get_string_matrix(destination).split(matrixS)[0];
+				String matrixTwo = get_string_matrix(destination).split(matrixS)[1];
+
+				matrix1 = matrix_conversion(matrixOne);
+				matrix2 = matrix_conversion(matrixTwo);
+
+				// CHECK IF SQUARE
+				if(matrix1.length != matrix1[0].length || matrix2.length != matrix2[0].length){
+					redirectAttributes.addFlashAttribute("message",
+					"Matrices in file " + file.getOriginalFilename() + " are not square!! ");
+				}else if (checkIfPower2(matrix2.length)== false){
+					redirectAttributes.addFlashAttribute("message",
+					"Matrices in file " + file.getOriginalFilename() + " are not power of 2!! ");
+				}else{
+				// All clear
+	// 				int[][] slice = getSliceOfArray(matrix1, 2, matrix1.length + 1);
+					redirectAttributes.addFlashAttribute("message",
+							"You successfully uploaded " +" "+ file.getOriginalFilename() +" !!");
+					redirectAttributes.addFlashAttribute("matrix1",
+							"Matrix 1 from file is: " +" "+ matrixOne);
+					redirectAttributes.addFlashAttribute("matrix2",
+							"Matrix 2 from file is: " +" "+ matrixTwo);
+				grpcClient(matrix1, matrix2, redirectAttributes);
+				}
+
+			}
+		} catch (Exception e) { 
+			throw new Exception("Matrices cannot be multiplied. Incompatible sizes! ");
 		}
-		
-		
+			
 		return "redirect:/";
 	}
 	
