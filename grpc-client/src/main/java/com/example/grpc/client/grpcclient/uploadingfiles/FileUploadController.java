@@ -198,7 +198,7 @@ public class FileUploadController {
                 stubss.add(stub7);
                 stubss.add(stub8);
 		
-// 		int stubs_index = 0;
+		int stubs_index = 0;
 
                 // Length row
                 int N = a.length;
@@ -214,7 +214,7 @@ public class FileUploadController {
                 // Get execution time and number of needed servers
                 int number_of_calls = (int) Math.pow(N, 2);
                 double execution_time = number_of_calls*footprint;
-                double number_of_server_needed = execution_time/deadline;
+                double number_of_server_needed = execution_time/10;
 
 
                 // if less than one server needed provide one server
