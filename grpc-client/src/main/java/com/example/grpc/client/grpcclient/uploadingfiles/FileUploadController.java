@@ -207,25 +207,16 @@ public class FileUploadController {
 		
                 double footprint = Double.valueOf(df.format(footPrint(stubss.get(random), a[0][0], a[N-1][N-1])));
                 
-//                 // Get execution time and number of needed servers
+                 // Get execution time and number of needed servers
                 int number_of_calls = (int) Math.pow(N, 2);
                 double execution_time = number_of_calls*footprint;
 		
-// 		calculate no. of servers
+		// Calculate no. of servers
                 double number_of_server_needed = execution_time/10;
 
-
-//                 // if less than one server needed provide one server
-//                 if (number_of_server_needed < 1.00 ) number_of_server_needed = 1.00;
-//                 // if more than one but less than 2 server needed use 2 servers
-//                 if(number_of_server_needed <2.00 && number_of_server_needed > 1.00) number_of_server_needed = 2.00;
                 
-                System.out.println("Number of server needed: " + number_of_server_needed);
-                System.out.println("Footprint: " + footprint + " seconds");
+                System.out.println("Estimated number of servers: " + number_of_server_needed);
                
-                
-                
-
                 if((number_of_server_needed > 7) ){
                         number_of_server_needed = 8;
                         
@@ -233,7 +224,8 @@ public class FileUploadController {
 
                 int number_of_servers_in_use = (int) Math.round(number_of_server_needed);
                 System.out.println("Number of used servers: " + number_of_servers_in_use);
-                System.out.println("=====================================\n");
+		System.out.println("Footprint is: " + footprint + " seconds");
+       
                 int c[][] = new int[N][N];
 
 //                 // Start the matrix calculation and print the result onto client 
@@ -266,11 +258,11 @@ public class FileUploadController {
 			    s= s+ " "+c[i][j];
                         }
                         System.out.println("");
-			s=s+"\r\n";
+			s=s+ "\n" ;
                     }
 		
-		redirectAttributes.addFlashAttribute("resultMult", s);
-// 						"Multiplication result is:" +" "+ s +" !!");
+		redirectAttributes.addFlashAttribute("resultMult",
+						"Multiplication result is:" +" "+ s +" !!");
 //                 // Close channels
                 channel1.shutdown();
                 channel2.shutdown();
