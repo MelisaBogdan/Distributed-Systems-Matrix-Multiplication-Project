@@ -222,7 +222,7 @@ public class FileUploadController {
                 DecimalFormat d = new DecimalFormat("#.#"); 
                 Random r = new Random();
                 int low = 0;
-                int high = 12;
+                int high = A.length;
                 int rr = r.nextInt(high-low) + low; 
 // 			+ low;
 		
