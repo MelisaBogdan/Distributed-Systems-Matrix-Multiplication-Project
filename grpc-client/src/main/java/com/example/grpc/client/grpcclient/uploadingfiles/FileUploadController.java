@@ -215,7 +215,7 @@ public class FileUploadController {
 // 			+ low;
 		
 		// calculate the footprint
-		double f= footPrint(stubss.get(random), A[0][0], A[l-1][l-1])
+		double f= footPrint(stubss.get(random), A[0][0], A[l-1][l-1]);
                 double footprint = Double.valueOf(d.format(f));
                 
                  // calculate execution time and number of servers that we need
