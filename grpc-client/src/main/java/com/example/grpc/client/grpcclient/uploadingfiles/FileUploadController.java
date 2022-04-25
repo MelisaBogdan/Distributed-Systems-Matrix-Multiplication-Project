@@ -209,8 +209,9 @@ public class FileUploadController {
 //                 // Get execution time and number of needed servers
                 int number_of_calls = (int) Math.pow(N, 2);
                 double execution_time = number_of_calls*footprint;
+		
+// 		calculate no. of servers
                 double number_of_server_needed = execution_time/10;
-// 		double number_of_server_needed = 1.00;
 
 
 //                 // if less than one server needed provide one server
@@ -219,27 +220,20 @@ public class FileUploadController {
 //                 if(number_of_server_needed <2.00 && number_of_server_needed > 1.00) number_of_server_needed = 2.00;
                 
                 System.out.println("Number of server needed: " + number_of_server_needed);
-                System.out.println("=====================================");
                 System.out.println("Footprint: " + footprint + " seconds");
                
                 
                 
 
-//                 if((number_of_server_needed > 8) ){
-//                         // If more than 8 servers needed to the operation to 8 servers and if the deadline is unrealistick provide 
-//                         // appropriate mesage and quit 
-//                         number_of_server_needed = 8;
-//                         if(deadline <= 50){
-//                                 System.out.println("Footprint: " + footprint + "\nFootprint x number of calls: " + (footprint*number_of_calls));
-//                                 System.out.println("The load exceeds the deadline, multiplication cannot be done!");
-//                                 return;
-//                         }
-//                 }
+                if((number_of_server_needed > 7) ){
+                        number_of_server_needed = 8;
+                        
+                }
 
-//                 int number_of_servers_in_use = (int) Math.round(number_of_server_needed);
-//                 System.out.println("Number of used servers: " + number_of_servers_in_use);
-//                 System.out.println("=====================================\n");
-//                 int c[][] = new int[N][N];
+                int number_of_servers_in_use = (int) Math.round(number_of_server_needed);
+                System.out.println("Number of used servers: " + number_of_servers_in_use);
+                System.out.println("=====================================\n");
+                int c[][] = new int[N][N];
 
 //                 // Start the matrix calculation and print the result onto client 
 //                 for (int i = 0; i < N; i++) { // row
