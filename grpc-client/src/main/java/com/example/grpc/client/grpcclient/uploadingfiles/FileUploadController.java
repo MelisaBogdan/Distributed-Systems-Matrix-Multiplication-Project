@@ -148,51 +148,6 @@ public class FileUploadController {
 // 		}
 			
 		return "redirect:/";
-
-// 			String file_path = "/home/melisa_bogdan/CW-DS";
-// 			destination = new File(file_path + '/' + file.getOriginalFilename());
-// 			try { 
-// 				file.transferTo(destination); 
-// 			} catch (Exception e) { 
-// 				redirectAttributes.addFlashAttribute("message",
-// 						"File is not provided, please add a file!! " + file.getOriginalFilename() + "!!");
-
-// 			}
-// 			// CHECK IF FILE EMPTY
-// 			if (file.isEmpty()) {
-// 				 redirectAttributes.addFlashAttribute("message",
-// 					"File " + file.getOriginalFilename() + " is empty! Upload again. ");
-// 			}else {
-
-// 				String matrixOne= get_string_matrix(destination).split(matrixS)[0];
-// 				String matrixTwo = get_string_matrix(destination).split(matrixS)[1];
-
-// 				matrix1 = matrix_conversion(matrixOne);
-// 				matrix2 = matrix_conversion(matrixTwo);
-
-// 				// CHECK IF SQUARE
-// 				if(matrix1.length != matrix1[0].length || matrix2.length != matrix2[0].length){
-// 					redirectAttributes.addFlashAttribute("message",
-// 					"Matrices in file " + file.getOriginalFilename() + " are not square!! ");
-// 				// CHECK IF POWER OF 2
-// 				}else if (checkIfPower2(matrix2.length)== false || checkIfPower2(matrix1.length)== false){
-// 					redirectAttributes.addFlashAttribute("message",
-// 					"Matrices in file " + file.getOriginalFilename() + " are not power of 2!! ");
-// 				}else{
-// 				// All clear we can do multiplication now
-	
-// 					redirectAttributes.addFlashAttribute("message",
-// 							"You successfully uploaded " +" "+ file.getOriginalFilename() +" !!");
-// 					redirectAttributes.addFlashAttribute("matrix1",
-// 							"Matrix 1 from file is: " +" "+ matrixOne);
-// 					redirectAttributes.addFlashAttribute("matrix2",
-// 							"Matrix 2 from file is: " +" "+ matrixTwo);
-// 				grpcC(matrix1, matrix2, redirectAttributes);
-// 				}
-
-// 			}
-			
-// 		return "redirect:/";
 	}
 	
 	// function for checking if matrix length is power of 2
@@ -221,6 +176,10 @@ public class FileUploadController {
                 ManagedChannel channel6 = ManagedChannelBuilder.forAddress(serverAddress,  9090).usePlaintext().build();  
                 ManagedChannel channel7 = ManagedChannelBuilder.forAddress(serverAddress,  9090).usePlaintext().build();  
                 ManagedChannel channel8 = ManagedChannelBuilder.forAddress(serverAddress,  9090).usePlaintext().build(); 
+		ManagedChannel channel9 = ManagedChannelBuilder.forAddress(serverAddress,  9090).usePlaintext().build();  
+                ManagedChannel channel10 = ManagedChannelBuilder.forAddress(serverAddress,  9090).usePlaintext().build();  
+                ManagedChannel channel11 = ManagedChannelBuilder.forAddress(serverAddress,  9090).usePlaintext().build();  
+                ManagedChannel channel12 = ManagedChannelBuilder.forAddress(serverAddress,  9090).usePlaintext().build(); 
 		
 		MatrixServiceGrpc.MatrixServiceBlockingStub stub1 = MatrixServiceGrpc.newBlockingStub(channel1);
                 MatrixServiceGrpc.MatrixServiceBlockingStub stub2 = MatrixServiceGrpc.newBlockingStub(channel2);
@@ -241,6 +200,10 @@ public class FileUploadController {
                 stubs_list.add(stub6);
                 stubs_list.add(stub7);
                 stubs_list.add(stub8);
+		stubs_list.add(stub9);
+                stubs_list.add(stub10);
+                stubs_list.add(stub11);
+                stubs_list.add(stub12);
 		
 		// stub index in array list
 		int index = 0;
@@ -255,7 +218,7 @@ public class FileUploadController {
                 DecimalFormat d = new DecimalFormat("#.#"); 
                 Random r = new Random();
                 int low = 0;
-                int high = 8;
+                int high = 12;
                 int rr = r.nextInt(high-low) + low; 
 // 			+ low;
 		
