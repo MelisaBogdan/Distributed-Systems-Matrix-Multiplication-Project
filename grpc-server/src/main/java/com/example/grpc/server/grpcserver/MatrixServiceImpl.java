@@ -10,7 +10,7 @@ class MatrixServiceImpl extends MatrixServiceGrpc.MatrixServiceImplBase {
     public void addBlock(MatrixRequest request, StreamObserver<MatrixReply> reply)
 	{
 		System.out.println("Request received from client:\n" + request);
-		int C00=request.getA()+request.getB();
+		int C00=request.getA00()+request.getB00();
 
 		MatrixReply response = MatrixReply.newBuilder().setC00(C).build();
 		reply.onNext(response);
@@ -21,7 +21,7 @@ class MatrixServiceImpl extends MatrixServiceGrpc.MatrixServiceImplBase {
     public void multiplyBlock(MatrixRequest request, StreamObserver<MatrixReply> reply)
     {
 		System.out.println("Request received from client:\n" + request);
-		int C00=request.getA()*request.getB();
+		int C00=request.getA00()*request.getB00();
 
 		MatrixReply response = MatrixReply.newBuilder().setC00(C).build();
 		reply.onNext(response);
