@@ -12,7 +12,7 @@ class MatrixServiceImpl extends MatrixServiceGrpc.MatrixServiceImplBase {
 		System.out.println("Request received from client:\n" + request);
 		int C00=request.getA00()+request.getB00();
 
-		MatrixReply response = MatrixReply.newBuilder().setC00(C).build();
+		MatrixReply response = MatrixReply.newBuilder().setC(C00).build();
 		reply.onNext(response);
 		reply.onCompleted();
 	}
@@ -23,7 +23,7 @@ class MatrixServiceImpl extends MatrixServiceGrpc.MatrixServiceImplBase {
 		System.out.println("Request received from client:\n" + request);
 		int C00=request.getA00()*request.getB00();
 
-		MatrixReply response = MatrixReply.newBuilder().setC00(C).build();
+		MatrixReply response = MatrixReply.newBuilder().setC(C00).build();
 		reply.onNext(response);
 		reply.onCompleted();
     }
