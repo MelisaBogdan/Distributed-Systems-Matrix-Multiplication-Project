@@ -189,6 +189,10 @@ public class FileUploadController {
                 MatrixServiceGrpc.MatrixServiceBlockingStub stub6 = MatrixServiceGrpc.newBlockingStub(channel6);
                 MatrixServiceGrpc.MatrixServiceBlockingStub stub7 = MatrixServiceGrpc.newBlockingStub(channel7);
                 MatrixServiceGrpc.MatrixServiceBlockingStub stub8 = MatrixServiceGrpc.newBlockingStub(channel8);
+		MatrixServiceGrpc.MatrixServiceBlockingStub stub9 = MatrixServiceGrpc.newBlockingStub(channel9);
+                MatrixServiceGrpc.MatrixServiceBlockingStub stub10 = MatrixServiceGrpc.newBlockingStub(channel10);
+                MatrixServiceGrpc.MatrixServiceBlockingStub stub11 = MatrixServiceGrpc.newBlockingStub(channel11);
+                MatrixServiceGrpc.MatrixServiceBlockingStub stub12 = MatrixServiceGrpc.newBlockingStub(channel12)
 		
 		// keep track of stubs in an array list
 		ArrayList <MatrixServiceGrpc.MatrixServiceBlockingStub> stubs_list = new ArrayList<MatrixServiceGrpc.MatrixServiceBlockingStub>();
