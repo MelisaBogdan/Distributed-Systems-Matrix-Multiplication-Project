@@ -211,7 +211,7 @@ public class FileUploadController {
                 Random r = new Random();
 //                 int low = 0;
 //                 int high = 8;
-                int random = r.nextInt(8) 
+                int random = r.nextInt(8); 
 // 			+ low;
 		
 		// calculate the footprint
