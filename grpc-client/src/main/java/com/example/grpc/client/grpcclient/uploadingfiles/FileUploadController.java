@@ -236,28 +236,28 @@ public class FileUploadController {
                 int c[][] = new int[N][N];
 
 //                 // Start the matrix calculation and print the result onto client 
-//                 for (int i = 0; i < N; i++) { // row
-//                         for (int j = 0; j < N; j++) { // col
-//                             for (int k = 0; k < N; k++) {
+                for (int i = 0; i < N; i++) {
+                        for (int j = 0; j < N; j++) {
+                            for (int k = 0; k < N; k++) {
                                 
-//                                 MatrixReply temp=stubss.get(stubs_index).multiplyBlock(MatrixRequest.newBuilder().setA(a[i][k]).setB(b[k][j]).build());
-//                                 if(stubs_index == number_of_servers_in_use-1) stubs_index = 0;
-//                                 else stubs_index++;
-//                                 MatrixReply temp2=stubss.get(stubs_index).addBlock(MatrixRequest.newBuilder().setA(c[i][j]).setB(temp.getC()).build());
-//                                 c[i][j] = temp2.getC();
-//                                 if(stubs_index == number_of_servers_in_use-1) stubs_index = 0;
-//                                 else stubs_index++;
-//                             }
-//                         }
-//                     }
+                                MatrixReply temp=stubss.get(stubs_index).multiplyBlock(MatrixRequest.newBuilder().setA00(a[i][k]).setB00(b[k][j]).build());
+                                if(stubs_index == number_of_servers_in_use-1) stubs_index = 0;
+                                else stubs_index++;
+                                MatrixReply temp2=stubss.get(stubs_index).addBlock(MatrixRequest.newBuilder().setA00(c[i][j]).setB00(temp.getC()).build());
+                                c[i][j] = temp2.getC();
+                                if(stubs_index == number_of_servers_in_use-1) stubs_index = 0;
+                                else stubs_index++;
+                            }
+                        }
+                    }
 
-//                     // Print result matrix
-//                     for (int i = 0; i < a.length; i++) {
-//                         for (int j = 0; j < a[0].length; j++) {
-//                             System.out.print(c[i][j] + " ");
-//                         }
-//                         System.out.println("");
-//                     }
+                    // Print result matrix
+                    for (int i = 0; i < a.length; i++) {
+                        for (int j = 0; j < a[0].length; j++) {
+                            System.out.print(c[i][j] + " ");
+                        }
+                        System.out.println("");
+                    }
 		
 //                 // Close channels
                 channel1.shutdown();
