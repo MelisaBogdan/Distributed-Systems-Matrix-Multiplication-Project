@@ -137,7 +137,7 @@ public class FileUploadController {
 						"Matrix 1 from file is: " +" "+ matrixOne);
 				redirectAttributes.addFlashAttribute("matrix2",
 						"Matrix 2 from file is: " +" "+ matrixTwo);
-			grpcClient(matrix1, matrix2);
+			grpcClient(matrix1, matrix2, redirectAttributes);
 			}
 			
 		}
@@ -158,7 +158,7 @@ public class FileUploadController {
 		return true;
 	}
 	
-	public void grpcClient(int[][]a, int[][]b){
+	public void grpcClient(int[][]a, int[][]b, RedirectAttributes redirectAttributes){
 
 		// 	deadline based scaling
 		
