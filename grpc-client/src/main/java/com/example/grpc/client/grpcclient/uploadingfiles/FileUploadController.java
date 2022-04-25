@@ -261,7 +261,7 @@ public class FileUploadController {
 		String s="[  ";
 		for (int i = 0; i < A.length; i++) {
                         for (int j = 0; j < A[0].length; j++) {
-                            System.out.print(c[i][j] + " ");
+                            System.out.print(C[i][j] + " ");
 			    s= s+ " "+ C[i][j];
                         }
                         System.out.println("");
