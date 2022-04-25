@@ -250,16 +250,18 @@ public class FileUploadController {
                             }
                         }
                     }
+		
 
                     // Print result matrix
-                    for (int i = 0; i < a.length; i++) {
+		for (int i = 0; i < a.length; i++) {
                         for (int j = 0; j < a[0].length; j++) {
                             System.out.print(c[i][j] + " ");
                         }
                         System.out.println("");
                     }
+		int l= c.length;
 		redirectAttributes.addFlashAttribute("resultMult",
-						"Multiplication result is:" +" "+ c +" !!");
+						"Multiplication result is:" +" "+ c.toString(l, l) +" !!");
 //                 // Close channels
                 channel1.shutdown();
                 channel2.shutdown();
