@@ -220,7 +220,6 @@ public class FileUploadController {
                 int low = 0;
                 int high = 8;
                 int rr = r.nextInt(high-low) + low; 
-// 			+ low;
 		
 		// calculate the footprint
 		double f= footprint(stubs_list.get(rr), A[0][0], A[l-1][l-1]);
