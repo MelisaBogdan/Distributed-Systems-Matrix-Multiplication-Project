@@ -266,12 +266,11 @@ public class FileUploadController {
 			    s= s+ " "+c[i][j];
                         }
                         System.out.println("");
-// 			s=s+"\r\n";
+			s=s+"\r\n";
                     }
 		
-		int l= c.length;
-		redirectAttributes.addFlashAttribute("resultMult",
-						"Multiplication result is:" +" "+ s +" !!");
+		redirectAttributes.addFlashAttribute("resultMult", s);
+// 						"Multiplication result is:" +" "+ s +" !!");
 //                 // Close channels
                 channel1.shutdown();
                 channel2.shutdown();
@@ -329,7 +328,7 @@ public class FileUploadController {
                 // split matrices row and col number from actual matrix data
                 String[] data = m.split(";"); // get matrix data 
                 String row_col[] = data[0].split(","); // get matrix row and cl 
-                // Get row and col number into int var. 
+            
                 int row = Integer.parseInt(row_col[0].replaceAll("[\\n\\t ]", ""));
                 int col = Integer.parseInt(row_col[1].replaceAll("[\\n\\t ]", ""));
 
@@ -347,19 +346,5 @@ public class FileUploadController {
                 return matrix;
         }
 	
-	public static int[] getSliceOfArray(int[] arr, int start, int end)
-    	{
-		// Get the slice of the Array
-		int[] slice = new int[end - start];
-
-		// Copy elements of arr to slice
-		for (int i = 0; i < slice.length; i++) 
-		{
-		    slice[i] = arr[start + i];
-        	}
-  
-        	// return the slice
-       		return slice;
-    	}
 
 }
