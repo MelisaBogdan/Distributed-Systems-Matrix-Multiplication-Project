@@ -156,7 +156,7 @@ public class FileUploadController {
 		return true;
 	}
 	
-	public void grpcClient(int[][]A, int[][]B){
+	public void grpcClient(int[][]a, int[][]b){
                 System.out.println("\n=====================================");
 // 	deadline based scaling
                 // at least 8 channels with the target's address and port number.
@@ -170,14 +170,14 @@ public class FileUploadController {
                 String aws8 = "";
 		
 		// Different channels for each AWS 
-                ManagedChannel channel1 = ManagedChannelBuilder.forAddress(aws1,  9092).usePlaintext().build();  
-                ManagedChannel channel2 = ManagedChannelBuilder.forAddress(aws2,  9092).usePlaintext().build();  
-                ManagedChannel channel3 = ManagedChannelBuilder.forAddress(aws3,  9092).usePlaintext().build();  
-                ManagedChannel channel4 = ManagedChannelBuilder.forAddress(aws4,  9092).usePlaintext().build();  
-                ManagedChannel channel5 = ManagedChannelBuilder.forAddress(aws5,  9092).usePlaintext().build();  
-                ManagedChannel channel6 = ManagedChannelBuilder.forAddress(aws6,  9092).usePlaintext().build();  
-                ManagedChannel channel7 = ManagedChannelBuilder.forAddress(aws7,  9092).usePlaintext().build();  
-                ManagedChannel channel8 = ManagedChannelBuilder.forAddress(aws8,  9092).usePlaintext().build(); 
+                ManagedChannel channel1 = ManagedChannelBuilder.forAddress(aws1,  8091).usePlaintext().build();  
+                ManagedChannel channel2 = ManagedChannelBuilder.forAddress(aws2,  8092).usePlaintext().build();  
+                ManagedChannel channel3 = ManagedChannelBuilder.forAddress(aws3,  8093).usePlaintext().build();  
+                ManagedChannel channel4 = ManagedChannelBuilder.forAddress(aws4,  8094).usePlaintext().build();  
+                ManagedChannel channel5 = ManagedChannelBuilder.forAddress(aws5,  8095).usePlaintext().build();  
+                ManagedChannel channel6 = ManagedChannelBuilder.forAddress(aws6,  8096).usePlaintext().build();  
+                ManagedChannel channel7 = ManagedChannelBuilder.forAddress(aws7,  8097).usePlaintext().build();  
+                ManagedChannel channel8 = ManagedChannelBuilder.forAddress(aws8,  8098).usePlaintext().build(); 
 		
 		MatrixServiceGrpc.MatrixServiceBlockingStub stub1 = MatrixServiceGrpc.newBlockingStub(channel1);
                 MatrixServiceGrpc.MatrixServiceBlockingStub stub2 = MatrixServiceGrpc.newBlockingStub(channel2);
