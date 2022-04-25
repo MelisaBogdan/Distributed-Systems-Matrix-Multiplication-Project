@@ -100,8 +100,7 @@ public class FileUploadController {
 	@PostMapping("/")
 	public String handleFileUpload(@RequestParam("file") MultipartFile file,
 			RedirectAttributes redirectAttributes) {
-		
-		
+	
 		String file_path = "/home/melisa_bogdan/CW-DS";
 		destination = new File(file_path + '/' + file.getOriginalFilename());
 		try { 
@@ -132,32 +131,19 @@ public class FileUploadController {
 				"Matrices in file " + file.getOriginalFilename() + " are not power of 2!! ");
 			}else{
 			// All clear
-// 				int[][] slice = getSliceOfArray(matrix1, 2, matrix1.length + 1);
 				redirectAttributes.addFlashAttribute("message",
 						"You successfully uploaded " +" "+ file.getOriginalFilename() +" !!");
 				redirectAttributes.addFlashAttribute("matrix1",
 						"Matrix 1 from file is: " +" "+ matrixOne);
 				redirectAttributes.addFlashAttribute("matrix2",
 						"Matrix 2 from file is: " +" "+ matrixTwo);
-			grpcClient(matrix1, matrix2, redirectAttributes);
+			grpcClient(matrix1, matrix2);
 			}
 			
 		}
 		
 		
 		return "redirect:/";
-	}
-	
-	public Boolean checkIfPower2(int n){
-		while(n!=1)
-		{
-			n = n/2;
-            		if(n%2 != 0 && n != 1){
-				System.out.println("not power of 2");
-				return false;
-			}
-		}
-		return true;
 	}
 	
 	public void grpcClient(int[][]a, int[][]b, RedirectAttributes redirectAttributes){
