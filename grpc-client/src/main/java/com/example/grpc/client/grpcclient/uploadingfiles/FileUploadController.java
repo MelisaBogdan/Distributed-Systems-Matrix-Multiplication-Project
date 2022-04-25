@@ -322,8 +322,8 @@ public class FileUploadController {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-		res= res.toString();
-                return res;
+		String var= res.toString();
+                return var;
         }
 	
 	 public static int[][] matrix_conversion(String matrix){
