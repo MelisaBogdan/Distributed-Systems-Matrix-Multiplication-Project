@@ -176,10 +176,10 @@ public class FileUploadController {
                 ManagedChannel channel6 = ManagedChannelBuilder.forAddress(serverAddress,  9090).usePlaintext().build();  
                 ManagedChannel channel7 = ManagedChannelBuilder.forAddress(serverAddress,  9090).usePlaintext().build();  
                 ManagedChannel channel8 = ManagedChannelBuilder.forAddress(serverAddress,  9090).usePlaintext().build(); 
-		ManagedChannel channel9 = ManagedChannelBuilder.forAddress(serverAddress,  9090).usePlaintext().build();  
-                ManagedChannel channel10 = ManagedChannelBuilder.forAddress(serverAddress,  9090).usePlaintext().build();  
-                ManagedChannel channel11 = ManagedChannelBuilder.forAddress(serverAddress,  9090).usePlaintext().build();  
-                ManagedChannel channel12 = ManagedChannelBuilder.forAddress(serverAddress,  9090).usePlaintext().build(); 
+// 		ManagedChannel channel9 = ManagedChannelBuilder.forAddress(serverAddress,  9090).usePlaintext().build();  
+//                 ManagedChannel channel10 = ManagedChannelBuilder.forAddress(serverAddress,  9090).usePlaintext().build();  
+//                 ManagedChannel channel11 = ManagedChannelBuilder.forAddress(serverAddress,  9090).usePlaintext().build();  
+//                 ManagedChannel channel12 = ManagedChannelBuilder.forAddress(serverAddress,  9090).usePlaintext().build(); 
 		
 		MatrixServiceGrpc.MatrixServiceBlockingStub stub1 = MatrixServiceGrpc.newBlockingStub(channel1);
                 MatrixServiceGrpc.MatrixServiceBlockingStub stub2 = MatrixServiceGrpc.newBlockingStub(channel2);
@@ -189,10 +189,10 @@ public class FileUploadController {
                 MatrixServiceGrpc.MatrixServiceBlockingStub stub6 = MatrixServiceGrpc.newBlockingStub(channel6);
                 MatrixServiceGrpc.MatrixServiceBlockingStub stub7 = MatrixServiceGrpc.newBlockingStub(channel7);
                 MatrixServiceGrpc.MatrixServiceBlockingStub stub8 = MatrixServiceGrpc.newBlockingStub(channel8);
-		MatrixServiceGrpc.MatrixServiceBlockingStub stub9 = MatrixServiceGrpc.newBlockingStub(channel9);
-                MatrixServiceGrpc.MatrixServiceBlockingStub stub10 = MatrixServiceGrpc.newBlockingStub(channel10);
-                MatrixServiceGrpc.MatrixServiceBlockingStub stub11 = MatrixServiceGrpc.newBlockingStub(channel11);
-                MatrixServiceGrpc.MatrixServiceBlockingStub stub12 = MatrixServiceGrpc.newBlockingStub(channel12);
+// 		MatrixServiceGrpc.MatrixServiceBlockingStub stub9 = MatrixServiceGrpc.newBlockingStub(channel9);
+//                 MatrixServiceGrpc.MatrixServiceBlockingStub stub10 = MatrixServiceGrpc.newBlockingStub(channel10);
+//                 MatrixServiceGrpc.MatrixServiceBlockingStub stub11 = MatrixServiceGrpc.newBlockingStub(channel11);
+//                 MatrixServiceGrpc.MatrixServiceBlockingStub stub12 = MatrixServiceGrpc.newBlockingStub(channel12);
 		
 		// keep track of stubs in an array list
 		ArrayList <MatrixServiceGrpc.MatrixServiceBlockingStub> stubs_list = new ArrayList<MatrixServiceGrpc.MatrixServiceBlockingStub>();
@@ -204,10 +204,10 @@ public class FileUploadController {
                 stubs_list.add(stub6);
                 stubs_list.add(stub7);
                 stubs_list.add(stub8);
-		stubs_list.add(stub9);
-                stubs_list.add(stub10);
-                stubs_list.add(stub11);
-                stubs_list.add(stub12);
+// 		stubs_list.add(stub9);
+//                 stubs_list.add(stub10);
+//                 stubs_list.add(stub11);
+//                 stubs_list.add(stub12);
 		
 		// stub index in array list
 		int index = 0;
@@ -217,7 +217,8 @@ public class FileUploadController {
 
 //                 // Length row
                 int l = A.length;
-
+		System.out.println("length is ");
+		System.out.println(l);
 //                 // use a random stub from the stub array to calculate footprint 
                 DecimalFormat d = new DecimalFormat("#.#"); 
                 Random r = new Random();
