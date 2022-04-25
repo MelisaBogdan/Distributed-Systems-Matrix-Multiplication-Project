@@ -129,7 +129,7 @@ public class FileUploadController {
 					redirectAttributes.addFlashAttribute("message",
 					"Matrices in file " + file.getOriginalFilename() + " are not square!! ");
 				// CHECK IF POWER OF 2
-				}else if (checkIfPower2(matrix2.length)== false or checkIfPower2(matrix1.length)== false){
+				}else if (checkIfPower2(matrix2.length)== false || checkIfPower2(matrix1.length)== false){
 					redirectAttributes.addFlashAttribute("message",
 					"Matrices in file " + file.getOriginalFilename() + " are not power of 2!! ");
 				}else{
