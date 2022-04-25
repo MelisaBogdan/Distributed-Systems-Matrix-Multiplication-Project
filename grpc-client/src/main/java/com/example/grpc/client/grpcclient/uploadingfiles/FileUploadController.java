@@ -43,8 +43,6 @@ import com.example.grpc.server.grpcserver.MatrixRequest;
 import com.example.grpc.server.grpcserver.MatrixReply;
 import com.example.grpc.server.grpcserver.MatrixServiceGrpc;
 
-// import exceptions
-import com.example.grpc.client.grpcclient.exceptions.IncompatibleMatrixException;
 
 
 @Controller
@@ -141,7 +139,7 @@ public class FileUploadController {
 							"Matrix 1 from file is: " +" "+ matrixOne);
 					redirectAttributes.addFlashAttribute("matrix2",
 							"Matrix 2 from file is: " +" "+ matrixTwo);
-				grpcClient(matrix1, matrix2, redirectAttributes);
+				grpcC(matrix1, matrix2, redirectAttributes);
 				}
 
 			}
@@ -165,7 +163,7 @@ public class FileUploadController {
 		return true;
 	}
 	
-	public void grpcClient(int[][]A, int[][]B, RedirectAttributes redirectAttributes){
+	public void grpcC(int[][]A, int[][]B, RedirectAttributes redirectAttributes){
 
 		// Deadline based scaling
 		
@@ -188,6 +186,7 @@ public class FileUploadController {
                 MatrixServiceGrpc.MatrixServiceBlockingStub stub7 = MatrixServiceGrpc.newBlockingStub(channel7);
                 MatrixServiceGrpc.MatrixServiceBlockingStub stub8 = MatrixServiceGrpc.newBlockingStub(channel8);
 		
+		// keep track of stubs in an array list
 		ArrayList<MatrixServiceGrpc.MatrixServiceBlockingStub> stubss = new ArrayList<MatrixServiceGrpc.MatrixServiceBlockingStub>();
                 stubss.add(stub1);
                 stubss.add(stub2);
@@ -198,27 +197,32 @@ public class FileUploadController {
                 stubss.add(stub7);
                 stubss.add(stub8);
 		
-		int stubs_index = 0;
+		// stub index in array list
+		int index = 0;
+		
+		// intilialize deadline
 		int deadline=10;
 
 //                 // Length row
                 int l = A.length;
 
 //                 // use a random stub from the stub array to calculate footprint 
-                DecimalFormat df = new DecimalFormat("#.##"); 
+                DecimalFormat d = new DecimalFormat("#.#"); 
                 Random r = new Random();
-                int low = 0;
-                int high = 8;
-                int random = r.nextInt(high-low) + low;
+//                 int low = 0;
+//                 int high = 8;
+                int random = r.nextInt(8) 
+// 			+ low;
 		
 		// calculate the footprint
-                double footprint = Double.valueOf(df.format(footPrint(stubss.get(random), A[0][0], A[l-1][l-1])));
+		double f= footPrint(stubss.get(random), A[0][0], A[l-1][l-1])
+                double footprint = Double.valueOf(d.format(f));
                 
-                 // Get execution time and number of needed servers
+                 // calculate execution time and number of servers that we need
                 int number_of_calls = (int) Math.pow(l, 2);
                 double execution_time = number_of_calls*footprint;
 		
-		// Calculate no. of servers
+		// calculate no. of servers
                 double number_of_server_needed = execution_time/10;
 
                 
