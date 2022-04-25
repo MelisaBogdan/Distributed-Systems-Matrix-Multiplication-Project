@@ -170,7 +170,7 @@ public class FileUploadController {
                 String aws8 = "";
 		
 		// Different channels for each AWS 
-                ManagedChannel channel1 = ManagedChannelBuilder.forAddress(aws1,  8082).usePlaintext().build();  
+                ManagedChannel channel1 = ManagedChannelBuilder.forAddress(aws1,  9090).usePlaintext().build();  
 //                 ManagedChannel channel2 = ManagedChannelBuilder.forAddress(aws2,  8082).usePlaintext().build();  
 //                 ManagedChannel channel3 = ManagedChannelBuilder.forAddress(aws3,  8083).usePlaintext().build();  
 //                 ManagedChannel channel4 = ManagedChannelBuilder.forAddress(aws4,  8084).usePlaintext().build();  
