@@ -280,7 +280,7 @@ public class FileUploadController {
 	private static double footPrint(MatrixServiceGrpc.MatrixServiceBlockingStub stub, int a, int b){
 
                 double startTime = System.nanoTime();
-                MatrixReply temp=stub.multiplyBlock(MatrixRequest.newBuilder().setA(a).setB(b).build());
+                MatrixReply temp=stub.multiplyBlock(MatrixRequest.newBuilder().setA00(a).setB00(b).build());
                 double endTime = System.nanoTime();
                 double footprint= endTime-startTime;
                 return (footprint/1000000000);
