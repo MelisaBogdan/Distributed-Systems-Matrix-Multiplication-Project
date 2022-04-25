@@ -219,22 +219,24 @@ public class FileUploadController {
                 double footprint = Double.valueOf(d.format(f));
                 
                  // calculate execution time and number of servers that we need
-                int number_of_calls = (int) Math.pow(l, 2);
-                double execution_time = number_of_calls*footprint;
+                int nocalls = (int) Math.pow(l, 2);
+		
+		// formula to calc execution time
+                double execution_time = nocalls * footprint;
 		
 		// calculate no. of servers
-                double number_of_server_needed = execution_time/10;
+                double noserver = execution_time/10;
 
                 
-                System.out.println("Estimated number of servers: " + number_of_server_needed);
+                System.out.println("Estimated number of servers: " + noserver);
                
                 if((number_of_server_needed > 7) ){
-                        number_of_server_needed = 8;
+                        noserver = 8;
                         
                 }
 
-                int number_of_servers_in_use = (int) Math.round(number_of_server_needed);
-                System.out.println("Number of used servers: " + number_of_servers_in_use);
+                int noServersUsed = (int) Math.round(noserver);
+                System.out.println("Number of used servers: " + noServersUsed);
 		System.out.println("Footprint is: " + footprint + " seconds");
        
                 int C[][] = new int[l][l];
@@ -245,14 +247,14 @@ public class FileUploadController {
                             for (int k = 0; k < l; k++) {
                                 
                                 MatrixReply temp=stubss.get(index).multiplyBlock(MatrixRequest.newBuilder().setA00(A[i][k]).setB00(B[k][j]).build());
-                                if(index == number_of_servers_in_use-1) 
+                                if(index == noServersUsed-1) 
 					index = 0;
                                 else 
 					index++;
 				    
                                 MatrixReply temp2=stubss.get(index).addBlock(MatrixRequest.newBuilder().setA00(C[i][j]).setB00(temp.getC00()).build());
                                 C[i][j] = temp2.getC00();
-                                if(index == number_of_servers_in_use-1) 
+                                if(index == noServersUsed-1) 
 					index = 0;
                                 else 
 					index++;
