@@ -258,7 +258,8 @@ public class FileUploadController {
                         }
                         System.out.println("");
                     }
-		
+		redirectAttributes.addFlashAttribute("resultMult",
+						"Multiplication result is:" +" "+ c +" !!");
 //                 // Close channels
                 channel1.shutdown();
                 channel2.shutdown();
