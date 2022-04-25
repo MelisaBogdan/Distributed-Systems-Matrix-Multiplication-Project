@@ -189,10 +189,7 @@ public class FileUploadController {
                 MatrixServiceGrpc.MatrixServiceBlockingStub stub6 = MatrixServiceGrpc.newBlockingStub(channel6);
                 MatrixServiceGrpc.MatrixServiceBlockingStub stub7 = MatrixServiceGrpc.newBlockingStub(channel7);
                 MatrixServiceGrpc.MatrixServiceBlockingStub stub8 = MatrixServiceGrpc.newBlockingStub(channel8);
-// 		MatrixServiceGrpc.MatrixServiceBlockingStub stub9 = MatrixServiceGrpc.newBlockingStub(channel9);
-//                 MatrixServiceGrpc.MatrixServiceBlockingStub stub10 = MatrixServiceGrpc.newBlockingStub(channel10);
-//                 MatrixServiceGrpc.MatrixServiceBlockingStub stub11 = MatrixServiceGrpc.newBlockingStub(channel11);
-//                 MatrixServiceGrpc.MatrixServiceBlockingStub stub12 = MatrixServiceGrpc.newBlockingStub(channel12);
+
 		
 		// keep track of stubs in an array list
 		ArrayList <MatrixServiceGrpc.MatrixServiceBlockingStub> stubs_list = new ArrayList<MatrixServiceGrpc.MatrixServiceBlockingStub>();
@@ -204,10 +201,7 @@ public class FileUploadController {
                 stubs_list.add(stub6);
                 stubs_list.add(stub7);
                 stubs_list.add(stub8);
-// 		stubs_list.add(stub9);
-//                 stubs_list.add(stub10);
-//                 stubs_list.add(stub11);
-//                 stubs_list.add(stub12);
+
 		
 		// stub index in array list
 		int index = 0;
@@ -223,9 +217,10 @@ public class FileUploadController {
                 DecimalFormat d = new DecimalFormat("#.#"); 
                 Random r = new Random();
                 int low = 0;
-                int high = A.length;
+		int high = 8;
+//                 int high = A.length;
                 int rr = r.nextInt(high-low) + low; 
-// 			+ low;
+
 		
 		// calculate the footprint
 		double f= footprint(stubs_list.get(rr), A[0][0], A[l-1][l-1]);
