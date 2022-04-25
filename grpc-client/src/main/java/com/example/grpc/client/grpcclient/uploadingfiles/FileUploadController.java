@@ -210,7 +210,7 @@ public class FileUploadController {
                 int number_of_calls = (int) Math.pow(N, 2);
                 double execution_time = number_of_calls*footprint;
                 double number_of_server_needed = execution_time/10;
-		double number_of_server_needed = 1.00;
+// 		double number_of_server_needed = 1.00;
 
 
 //                 // if less than one server needed provide one server
@@ -266,14 +266,14 @@ public class FileUploadController {
 //                     }
 		
 //                 // Close channels
-//                 channel1.shutdown();
-//                 channel2.shutdown();
-//                 channel3.shutdown();
-//                 channel4.shutdown();
-//                 channel5.shutdown();
-//                 channel6.shutdown();
-//                 channel7.shutdown();
-//                 channel8.shutdown();
+                channel1.shutdown();
+                channel2.shutdown();
+                channel3.shutdown();
+                channel4.shutdown();
+                channel5.shutdown();
+                channel6.shutdown();
+                channel7.shutdown();
+                channel8.shutdown();
                 
 	}
 	
