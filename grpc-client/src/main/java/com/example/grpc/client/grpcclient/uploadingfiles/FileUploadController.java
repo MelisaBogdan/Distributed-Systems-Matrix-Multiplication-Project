@@ -259,11 +259,11 @@ public class FileUploadController {
 			    s= s+ " "+c[i][j];
                         }
                         System.out.println("");
-			s=s+ "   |   " ;
+			s=s+ "      |       " ;
                     }
 		
 		redirectAttributes.addFlashAttribute("resultMult",
-						"Multiplication result is:" +" "+ s +" !!");
+						"Multiplication result is:" +" "+ s +" ");
 //                 // Close channels
                 channel1.shutdown();
                 channel2.shutdown();
@@ -292,28 +292,19 @@ public class FileUploadController {
 	
 
         public static String get_string_matrix(File file) {
-//                 StringBuilder result = new StringBuilder();
-//                 try {
-//                     BufferedReader br = new BufferedReader(new FileReader(file));
-//                     String s = null;
-//                     while ((s = br.readLine()) != null) {
-//                         result.append(System.lineSeparator() + s);
-//                     }
-//                     br.close();
-//                 } catch (Exception e) {
-//                     e.printStackTrace();
-//                 }
-//                 return result.toString();
+                StringBuilder result = new StringBuilder();
+                try {
+                    BufferedReader br = new BufferedReader(new FileReader(file));
+                    String s = null;
+                    while ((s = br.readLine()) != null) {
+                        result.append(System.lineSeparator() + s);
+                    }
+                    br.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                return result.toString();
 		
-		ArrayList<String> result = new ArrayList<>();
-		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-   			 while (br.ready()) {
-        			result.add(br.readLine());
-    			}
-		} catch (Exception e) {
-			e.printStackTrace();
-            	}
-		return result.toString();
         }
 	
 	 public static int[][] matrix_conversion(String m){
