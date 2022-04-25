@@ -244,18 +244,18 @@ public class FileUploadController {
                         for (int j = 0; j < l; j++) {
                             for (int k = 0; k < l; k++) {
                                 
-                                MatrixReply temp=stubss.get(stubs_index).multiplyBlock(MatrixRequest.newBuilder().setA00(A[i][k]).setB00(B[k][j]).build());
-                                if(stubs_index == number_of_servers_in_use-1) 
-					stubs_index = 0;
+                                MatrixReply temp=stubss.get(index).multiplyBlock(MatrixRequest.newBuilder().setA00(A[i][k]).setB00(B[k][j]).build());
+                                if(index == number_of_servers_in_use-1) 
+					index = 0;
                                 else 
-					stubs_index++;
+					index++;
 				    
-                                MatrixReply temp2=stubss.get(stubs_index).addBlock(MatrixRequest.newBuilder().setA00(C[i][j]).setB00(temp.getC00()).build());
+                                MatrixReply temp2=stubss.get(index).addBlock(MatrixRequest.newBuilder().setA00(C[i][j]).setB00(temp.getC00()).build());
                                 C[i][j] = temp2.getC00();
-                                if(stubs_index == number_of_servers_in_use-1) 
-					stubs_index = 0;
+                                if(index == number_of_servers_in_use-1) 
+					index = 0;
                                 else 
-					stubs_index++;
+					index++;
                             }
                         }
                     }
