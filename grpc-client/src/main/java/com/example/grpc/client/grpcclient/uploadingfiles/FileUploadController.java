@@ -258,7 +258,7 @@ public class FileUploadController {
 			    s= s+ " "+c[i][j];
                         }
                         System.out.println("");
-			s=s+ "\n" ;
+			s=s+ "   |   " ;
                     }
 		
 		redirectAttributes.addFlashAttribute("resultMult",
