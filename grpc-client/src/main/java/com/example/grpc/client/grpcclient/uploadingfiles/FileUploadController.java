@@ -242,12 +242,17 @@ public class FileUploadController {
                             for (int k = 0; k < N; k++) {
                                 
                                 MatrixReply temp=stubss.get(stubs_index).multiplyBlock(MatrixRequest.newBuilder().setA00(a[i][k]).setB00(b[k][j]).build());
-                                if(stubs_index == number_of_servers_in_use-1) stubs_index = 0;
-                                else stubs_index++;
+                                if(stubs_index == number_of_servers_in_use-1) 
+					stubs_index = 0;
+                                else 
+					stubs_index++;
+				    
                                 MatrixReply temp2=stubss.get(stubs_index).addBlock(MatrixRequest.newBuilder().setA00(c[i][j]).setB00(temp.getC00()).build());
                                 c[i][j] = temp2.getC00();
-                                if(stubs_index == number_of_servers_in_use-1) stubs_index = 0;
-                                else stubs_index++;
+                                if(stubs_index == number_of_servers_in_use-1) 
+					stubs_index = 0;
+                                else 
+					stubs_index++;
                             }
                         }
                     }
@@ -261,7 +266,7 @@ public class FileUploadController {
 			    s= s+ " "+c[i][j];
                         }
                         System.out.println("");
-			s=s+"\r\n";
+// 			s=s+"\r\n";
                     }
 		
 		int l= c.length;
