@@ -101,7 +101,7 @@ public class FileUploadController {
 	public String handleFileUpload(@RequestParam("file") MultipartFile file,
 			RedirectAttributes redirectAttributes) throws Exception{
 	
-		try{
+// 		try{
 			String file_path = "/home/melisa_bogdan/CW-DS";
 			destination = new File(file_path + '/' + file.getOriginalFilename());
 			try { 
@@ -143,9 +143,9 @@ public class FileUploadController {
 				}
 
 			}
-		} catch (Exception e) { 
-			throw new Exception("Matrices cannot be multiplied. Incompatible sizes! ");
-		}
+// 		} catch (Exception e) { 
+// 			throw new Exception("Matrices cannot be multiplied. Incompatible sizes! ");
+// 		}
 			
 		return "redirect:/";
 	}
