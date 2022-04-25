@@ -131,10 +131,11 @@ public class FileUploadController {
 				"Matrices in file " + file.getOriginalFilename() + " are not power of 2!! ");
 			}else{
 			// All clear
+				int[] slice = getSliceOfArray(matrix1, 2, matrix.length + 1);
 				redirectAttributes.addFlashAttribute("message",
 						"You successfully uploaded " +" "+ file.getOriginalFilename() +" !!");
 				redirectAttributes.addFlashAttribute("matrix1",
-						"Matrix 1 from file is: " +" "+ matrixOne);
+						"Matrix 1 from file is: " +" "+ slice);
 				redirectAttributes.addFlashAttribute("matrix2",
 						"Matrix 2 from file is: " +" "+ matrixTwo);
 			grpcClient(matrix1, matrix2, redirectAttributes);
@@ -339,5 +340,20 @@ public class FileUploadController {
                 }
                 return matrix;
         }
+	
+	public static int[] getSliceOfArray(int[] arr, int start, int end)
+    	{
+		// Get the slice of the Array
+		int[] slice = new int[end - start];
+
+		// Copy elements of arr to slice
+		for (int i = 0; i < slice.length; i++) 
+		{
+		    slice[i] = arr[start + i];
+        	}
+  
+        	// return the slice
+       		return slice;
+    	}
 
 }
