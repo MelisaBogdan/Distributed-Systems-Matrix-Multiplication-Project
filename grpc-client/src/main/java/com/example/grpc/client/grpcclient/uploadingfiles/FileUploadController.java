@@ -100,7 +100,7 @@ public class FileUploadController {
 	public String handleFileUpload(@RequestParam("file") MultipartFile file,
 			RedirectAttributes redirectAttributes) throws Exception{
 	
-// 		try{
+
 			String file_path = "/home/melisa_bogdan/CW-DS";
 			destination = new File(file_path + '/' + file.getOriginalFilename());
 			try { 
@@ -143,9 +143,6 @@ public class FileUploadController {
 				}
 
 			}
-// 		} catch (Exception e) { 
-// 			throw new Exception("Matrices cannot be multiplied. Incompatible sizes! ");
-// 		}
 			
 		return "redirect:/";
 	}
@@ -187,15 +184,15 @@ public class FileUploadController {
                 MatrixServiceGrpc.MatrixServiceBlockingStub stub8 = MatrixServiceGrpc.newBlockingStub(channel8);
 		
 		// keep track of stubs in an array list
-		ArrayList<MatrixServiceGrpc.MatrixServiceBlockingStub> stubss = new ArrayList<MatrixServiceGrpc.MatrixServiceBlockingStub>();
-                stubss.add(stub1);
-                stubss.add(stub2);
-                stubss.add(stub3);
-                stubss.add(stub4);
-                stubss.add(stub5);
-                stubss.add(stub6);
-                stubss.add(stub7);
-                stubss.add(stub8);
+		ArrayList <MatrixServiceGrpc.MatrixServiceBlockingStub> stubs_list = new ArrayList<MatrixServiceGrpc.MatrixServiceBlockingStub>();
+                stubs_list.add(stub1);
+                stubs_list.add(stub2);
+                stubs_list.add(stub3);
+                stubs_list.add(stub4);
+                stubs_list.add(stub5);
+                stubs_list.add(stub6);
+                stubs_list.add(stub7);
+                stubs_list.add(stub8);
 		
 		// stub index in array list
 		int index = 0;
@@ -211,29 +208,27 @@ public class FileUploadController {
                 Random r = new Random();
 //                 int low = 0;
 //                 int high = 8;
-                int random = r.nextInt(8); 
+                int rr = r.nextInt(8); 
 // 			+ low;
 		
 		// calculate the footprint
-		double f= footPrint(stubss.get(random), A[0][0], A[l-1][l-1]);
+		double f= footprint(stubs_list.get(rr), A[0][0], A[l-1][l-1]);
                 double footprint = Double.valueOf(d.format(f));
                 
                  // calculate execution time and number of servers that we need
                 int nocalls = (int) Math.pow(l, 2);
 		
 		// formula to calc execution time
-                double execution_time = nocalls * footprint;
+                double execTime = nocalls * footprint;
 		
 		// calculate no. of servers
-                double noserver = execution_time/10;
+                double noserver = execTime/10;
 
-                
-                System.out.println("Estimated number of servers: " + noserver);
-               
-                if((noserver > 7) ){
-                        noserver = 8;
-                        
+		if((noserver > 7) ){
+                        noserver = 8;     
                 }
+		
+                System.out.println("Estimated number of servers: " + noserver);
 
                 int noServersUsed = (int) Math.round(noserver);
                 System.out.println("Number of used servers: " + noServersUsed);
@@ -246,14 +241,15 @@ public class FileUploadController {
                         for (int j = 0; j < l; j++) {
                             for (int k = 0; k < l; k++) {
                                 
-                                MatrixReply temp=stubss.get(index).multiplyBlock(MatrixRequest.newBuilder().setA00(A[i][k]).setB00(B[k][j]).build());
-                                if(index == noServersUsed-1) 
+                                MatrixReply m = stubs_list.get(index).multiplyBlock(MatrixRequest.newBuilder().setA00(A[i][k]).setB00(B[k][j]).build());
+                                if(index == noServersUsed - 1) 
 					index = 0;
                                 else 
 					index++;
 				    
-                                MatrixReply temp2=stubss.get(index).addBlock(MatrixRequest.newBuilder().setA00(C[i][j]).setB00(temp.getC00()).build());
-                                C[i][j] = temp2.getC00();
+                                MatrixReply m2 = stubs_list.get(index).addBlock(MatrixRequest.newBuilder().setA00(C[i][j]).setB00( m.getC00()).build());
+				// assignnew element for each pos of the new int array    
+                                C[i][j] = m2.getC00();
                                 if(index == noServersUsed-1) 
 					index = 0;
                                 else 
@@ -277,7 +273,7 @@ public class FileUploadController {
 		
 		redirectAttributes.addFlashAttribute("resultMult",
 						"Multiplication result is:" +" "+ s +" !!");
-//                 // Close channels
+                // Close channels
                 channel1.shutdown();
                 channel2.shutdown();
                 channel3.shutdown();
@@ -289,12 +285,20 @@ public class FileUploadController {
                 
 	}
 	
-	private static double footPrint(MatrixServiceGrpc.MatrixServiceBlockingStub stub, int A, int B){
-
-                double startTime = System.nanoTime();
-                MatrixReply temp=stub.multiplyBlock(MatrixRequest.newBuilder().setA00(A).setB00(B).build());
-                double endTime = System.nanoTime();
-                double footprint= endTime-startTime;
+	private static double footprint(MatrixServiceGrpc.MatrixServiceBlockingStub stub, int A, int B){
+		// mark the start time
+                double start = System.nanoTime();
+		
+		// do the multiplication
+                MatrixReply m = stub.multiplyBlock(MatrixRequest.newBuilder().setA00(A).setB00(B).build());
+		
+		// mark the end time
+                double end = System.nanoTime();
+		
+		// final time is end-start
+                double footprint= end-start;
+		
+		// calculate in seconds
                 return (footprint/1000000000);
         }
 	
@@ -305,41 +309,48 @@ public class FileUploadController {
 	
 
         public static String get_string_matrix(File file) {
-                StringBuilder result = new StringBuilder();
+                StringBuilder res = new StringBuilder();
                 try {
-                    BufferedReader br = new BufferedReader(new FileReader(file));
+                    BufferedReader b = new BufferedReader(new FileReader(file));
                     String s = null;
-                    while ((s = br.readLine()) != null) {
-                        result.append(System.lineSeparator() + s);
+			
+                    while ((s = b.readLine()) != null) {
+                        res.append(System.lineSeparator() + s);
                     }
-                    br.close();
+                    b.close();
+		// error catch
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                return result.toString();
+		res= res.toString();
+                return res;
         }
 	
-	 public static int[][] matrix_conversion(String m){
+	 public static int[][] matrix_conversion(String matrix){
 
-                // split matrices row and col number from actual matrix data
-                String[] data = m.split(";"); // get matrix data 
-                String row_col[] = data[0].split(","); // get matrix row and cl 
-            
-                int row = Integer.parseInt(row_col[0].replaceAll("[\\n\\t ]", ""));
-                int col = Integer.parseInt(row_col[1].replaceAll("[\\n\\t ]", ""));
+                // split matrice into rows and cols 
+                String[] m = matrix.split(";"); // get matrix data 
+		 
+		 // matrix of rows and columns plit by ,
+                String r_c[] = m[0].split(","); 
+            	
+		 // get rid of all new lines and tabs
+                int r = Integer.parseInt(r_c[0].replaceAll("[\\n\\t ]", ""));
+                int c = Integer.parseInt(r_c[1].replaceAll("[\\n\\t ]", ""));
 
-                String[] matrixData_temp = data[1].split(" "); // get the matrix data into string array 
+                String[] matrix_temp = m[1].split(" "); // get the matrix data into string array 
                
-                int[][] matrix = new int[row][col];
-                int temp_matrix_index = 0; 
+		 // new matrix which will hold the matrix conersion result from string to int
+                int[][] matrix1 = new int[r][c];
+                int matrix1_index = 0; 
                  
                 for(int i = 0; i < row; i++){
                         for(int j = 0; j < col; j++){
-                                matrix[i][j] = Integer.parseInt(matrixData_temp[temp_matrix_index].replaceAll("[\\n\\t ]", ""));
-                                temp_matrix_index++;
+                                matrix1[i][j] = Integer.parseInt( matrix_temp[matrix1_index].replaceAll("[\\n\\t ]", ""));
+                                matrix1_index++;
                         }
                 }
-                return matrix;
+                return matrix1;
         }
 	
 
