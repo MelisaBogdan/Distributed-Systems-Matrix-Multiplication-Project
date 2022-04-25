@@ -58,6 +58,8 @@ public class FileUploadController {
         @Value("${matrix.symbols}")
         private String matrixS;
 	
+	@Value("${com.CW-DS.grpc.client.serverAddress}")
+	private String serverAddress;
 
 	@Autowired
 	public FileUploadController(StorageService storageService) {
