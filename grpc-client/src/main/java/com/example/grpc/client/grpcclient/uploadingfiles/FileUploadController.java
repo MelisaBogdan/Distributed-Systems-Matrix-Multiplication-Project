@@ -230,7 +230,7 @@ public class FileUploadController {
                 
                 System.out.println("Estimated number of servers: " + noserver);
                
-                if((number_of_server_needed > 7) ){
+                if((noserver > 7) ){
                         noserver = 8;
                         
                 }
