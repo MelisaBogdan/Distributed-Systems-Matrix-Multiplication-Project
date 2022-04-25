@@ -159,17 +159,8 @@ public class FileUploadController {
 	}
 	
 	public void grpcClient(int[][]a, int[][]b){
-                System.out.println("\n=====================================");
-// 	deadline based scaling
-                // at least 8 channels with the target's address and port number.
-                String aws1 = ""; 
-                String aws2 = ""; 
-                String aws3 = ""; 
-                String aws4 = ""; 
-                String aws5 = "";
-                String aws6 = ""; 
-                String aws7 = ""; 
-                String aws8 = "";
+
+		// 	deadline based scaling
 		
 		// Different channels for each AWS 
                 ManagedChannel channel1 = ManagedChannelBuilder.forAddress(serverAddress,  9090).usePlaintext().build();  
@@ -201,6 +192,7 @@ public class FileUploadController {
                 stubss.add(stub8);
 		
 		int stubs_index = 0;
+		int deadline=10;
 
 //                 // Length row
                 int N = a.length;
@@ -211,12 +203,13 @@ public class FileUploadController {
                 int low = 0;
                 int high = 8;
                 int random = r.nextInt(high-low) + low;
-//                 double footprint = Double.valueOf(df.format(footPrint(stubss.get(random), a[0][0], a[N-1][N-1])));
+		
+                double footprint = Double.valueOf(df.format(footPrint(stubss.get(random), a[0][0], a[N-1][N-1])));
                 
 //                 // Get execution time and number of needed servers
-//                 int number_of_calls = (int) Math.pow(N, 2);
-//                 double execution_time = number_of_calls*footprint;
-//                 double number_of_server_needed = execution_time/10;
+                int number_of_calls = (int) Math.pow(N, 2);
+                double execution_time = number_of_calls*footprint;
+                double number_of_server_needed = execution_time/10;
 		double number_of_server_needed = 1.00;
 
 
@@ -284,6 +277,14 @@ public class FileUploadController {
                 
 	}
 	
+	private static double footPrint(MatrixServiceGrpc.MatrixServiceBlockingStub stub, int a, int b){
+
+                double startTime = System.nanoTime();
+                MatrixReply temp=stub.multiplyBlock(MatrixRequest.newBuilder().setA(a).setB(b).build());
+                double endTime = System.nanoTime();
+                double footprint= endTime-startTime;
+                return (footprint/1000000000);
+        }
 	
 	@ExceptionHandler(StorageFileNotFoundException.class)
 	public ResponseEntity<?> handleStorageFileNotFound(StorageFileNotFoundException exc) {
