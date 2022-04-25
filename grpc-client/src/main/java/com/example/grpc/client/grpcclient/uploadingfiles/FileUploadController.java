@@ -99,7 +99,7 @@ public class FileUploadController {
 	
 	@PostMapping("/")
 	public String handleFileUpload(@RequestParam("file") MultipartFile file,
-			RedirectAttributes redirectAttributes) throws IOException{
+			RedirectAttributes redirectAttributes) throws Exception{
 	
 		try{
 			String file_path = "/home/melisa_bogdan/CW-DS";
