@@ -100,7 +100,8 @@ public class FileUploadController {
 	@PostMapping("/")
 	public String handleFileUpload(@RequestParam("file") MultipartFile file,
 			RedirectAttributes redirectAttributes) {
-	
+		
+		
 		String file_path = "/home/melisa_bogdan/CW-DS";
 		destination = new File(file_path + '/' + file.getOriginalFilename());
 		try { 
@@ -291,28 +292,28 @@ public class FileUploadController {
 	
 
         public static String get_string_matrix(File file) {
-                StringBuilder result = new StringBuilder();
-                try {
-                    BufferedReader br = new BufferedReader(new FileReader(file));
-                    String s = null;
-                    while ((s = br.readLine()) != null) {
-                        result.append(System.lineSeparator() + s);
-                    }
-                    br.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                return result.toString();
+//                 StringBuilder result = new StringBuilder();
+//                 try {
+//                     BufferedReader br = new BufferedReader(new FileReader(file));
+//                     String s = null;
+//                     while ((s = br.readLine()) != null) {
+//                         result.append(System.lineSeparator() + s);
+//                     }
+//                     br.close();
+//                 } catch (Exception e) {
+//                     e.printStackTrace();
+//                 }
+//                 return result.toString();
 		
-// 		ArrayList<String> result = new ArrayList<>();
-// 		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-//    			 while (br.ready()) {
-//         			result.add(br.readLine());
-//     			}
-// 		} catch (Exception e) {
-// 			e.printStackTrace();
-//             	}
-// 		return result.toString();
+		ArrayList<String> result = new ArrayList<>();
+		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+   			 while (br.ready()) {
+        			result.add(br.readLine());
+    			}
+		} catch (Exception e) {
+			e.printStackTrace();
+            	}
+		return result.toString();
         }
 	
 	 public static int[][] matrix_conversion(String m){
