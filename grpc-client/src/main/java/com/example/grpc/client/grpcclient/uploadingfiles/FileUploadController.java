@@ -171,32 +171,32 @@ public class FileUploadController {
 		
 		// Different channels for each AWS 
                 ManagedChannel channel1 = ManagedChannelBuilder.forAddress(aws1,  8082).usePlaintext().build();  
-                ManagedChannel channel2 = ManagedChannelBuilder.forAddress(aws2,  8082).usePlaintext().build();  
-                ManagedChannel channel3 = ManagedChannelBuilder.forAddress(aws3,  8083).usePlaintext().build();  
-                ManagedChannel channel4 = ManagedChannelBuilder.forAddress(aws4,  8084).usePlaintext().build();  
-                ManagedChannel channel5 = ManagedChannelBuilder.forAddress(aws5,  8085).usePlaintext().build();  
-                ManagedChannel channel6 = ManagedChannelBuilder.forAddress(aws6,  8086).usePlaintext().build();  
-                ManagedChannel channel7 = ManagedChannelBuilder.forAddress(aws7,  8087).usePlaintext().build();  
-                ManagedChannel channel8 = ManagedChannelBuilder.forAddress(aws8,  8088).usePlaintext().build(); 
+//                 ManagedChannel channel2 = ManagedChannelBuilder.forAddress(aws2,  8082).usePlaintext().build();  
+//                 ManagedChannel channel3 = ManagedChannelBuilder.forAddress(aws3,  8083).usePlaintext().build();  
+//                 ManagedChannel channel4 = ManagedChannelBuilder.forAddress(aws4,  8084).usePlaintext().build();  
+//                 ManagedChannel channel5 = ManagedChannelBuilder.forAddress(aws5,  8085).usePlaintext().build();  
+//                 ManagedChannel channel6 = ManagedChannelBuilder.forAddress(aws6,  8086).usePlaintext().build();  
+//                 ManagedChannel channel7 = ManagedChannelBuilder.forAddress(aws7,  8087).usePlaintext().build();  
+//                 ManagedChannel channel8 = ManagedChannelBuilder.forAddress(aws8,  8088).usePlaintext().build(); 
 		
 		MatrixServiceGrpc.MatrixServiceBlockingStub stub1 = MatrixServiceGrpc.newBlockingStub(channel1);
-                MatrixServiceGrpc.MatrixServiceBlockingStub stub2 = MatrixServiceGrpc.newBlockingStub(channel2);
-                MatrixServiceGrpc.MatrixServiceBlockingStub stub3 = MatrixServiceGrpc.newBlockingStub(channel3);
-                MatrixServiceGrpc.MatrixServiceBlockingStub stub4 = MatrixServiceGrpc.newBlockingStub(channel4);
-                MatrixServiceGrpc.MatrixServiceBlockingStub stub5 = MatrixServiceGrpc.newBlockingStub(channel5);
-                MatrixServiceGrpc.MatrixServiceBlockingStub stub6 = MatrixServiceGrpc.newBlockingStub(channel6);
-                MatrixServiceGrpc.MatrixServiceBlockingStub stub7 = MatrixServiceGrpc.newBlockingStub(channel7);
-                MatrixServiceGrpc.MatrixServiceBlockingStub stub8 = MatrixServiceGrpc.newBlockingStub(channel8);
+//                 MatrixServiceGrpc.MatrixServiceBlockingStub stub2 = MatrixServiceGrpc.newBlockingStub(channel2);
+//                 MatrixServiceGrpc.MatrixServiceBlockingStub stub3 = MatrixServiceGrpc.newBlockingStub(channel3);
+//                 MatrixServiceGrpc.MatrixServiceBlockingStub stub4 = MatrixServiceGrpc.newBlockingStub(channel4);
+//                 MatrixServiceGrpc.MatrixServiceBlockingStub stub5 = MatrixServiceGrpc.newBlockingStub(channel5);
+//                 MatrixServiceGrpc.MatrixServiceBlockingStub stub6 = MatrixServiceGrpc.newBlockingStub(channel6);
+//                 MatrixServiceGrpc.MatrixServiceBlockingStub stub7 = MatrixServiceGrpc.newBlockingStub(channel7);
+//                 MatrixServiceGrpc.MatrixServiceBlockingStub stub8 = MatrixServiceGrpc.newBlockingStub(channel8);
 		
 		ArrayList<MatrixServiceGrpc.MatrixServiceBlockingStub> stubss = new ArrayList<MatrixServiceGrpc.MatrixServiceBlockingStub>();
                 stubss.add(stub1);
-                stubss.add(stub2);
-                stubss.add(stub3);
-                stubss.add(stub4);
-                stubss.add(stub5);
-                stubss.add(stub6);
-                stubss.add(stub7);
-                stubss.add(stub8);
+//                 stubss.add(stub2);
+//                 stubss.add(stub3);
+//                 stubss.add(stub4);
+//                 stubss.add(stub5);
+//                 stubss.add(stub6);
+//                 stubss.add(stub7);
+//                 stubss.add(stub8);
 		
 		int stubs_index = 0;
 
