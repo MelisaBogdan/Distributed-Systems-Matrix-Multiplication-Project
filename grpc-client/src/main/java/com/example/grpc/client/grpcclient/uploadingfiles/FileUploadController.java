@@ -131,7 +131,7 @@ public class FileUploadController {
 				"Matrices in file " + file.getOriginalFilename() + " are not power of 2!! ");
 			}else{
 			// All clear
-				int[] slice = getSliceOfArray(matrix1, 2, matrix.length + 1);
+				int[] slice = getSliceOfArray(matrix1, 2, matrix1.length + 1);
 				redirectAttributes.addFlashAttribute("message",
 						"You successfully uploaded " +" "+ file.getOriginalFilename() +" !!");
 				redirectAttributes.addFlashAttribute("matrix1",
