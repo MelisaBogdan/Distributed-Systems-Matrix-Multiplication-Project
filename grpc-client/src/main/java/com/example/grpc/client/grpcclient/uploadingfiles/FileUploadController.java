@@ -222,10 +222,9 @@ public class FileUploadController {
                 // if more than one but less than 2 server needed use 2 servers
                 if(number_of_server_needed <2.00 && number_of_server_needed > 1.00) number_of_server_needed = 2.00;
                 
-                System.out.println("Number of server needed: " + number_of_server_needed);
-                System.out.println("=====================================");
-                System.out.println("Footprint: " + footprint + " seconds");
-                System.out.println("=====================================");
+                System.out.println("Estimated number of servers: " + number_of_server_needed);
+               
+            
                 
                 
 
@@ -242,7 +241,8 @@ public class FileUploadController {
 
                 int number_of_servers_in_use = (int) Math.round(number_of_server_needed);
                 System.out.println("Number of used servers: " + number_of_servers_in_use);
-                System.out.println("=====================================\n");
+		 System.out.println("Footprint is: " + footprint + " seconds");
+                
                 int c[][] = new int[N][N];
 
                 // Start the matrix calculation and print the result onto client 
