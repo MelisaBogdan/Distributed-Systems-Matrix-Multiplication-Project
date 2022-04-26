@@ -195,81 +195,79 @@ public class FileUploadController {
                 stubss.add(stub6);
                 stubss.add(stub7);
                 stubss.add(stub8);
-		
-		int stubs_index = 0;
-		int deadline=10;
 
-//                 // Length row
-                int l = A.length;
+                // Counts stubs into the matrix calculation
+                int stubs_index = 0;
 
-//                 // use a random stub from the stub array to calculate footprint 
+                // Length row
+                int N = a.length;
+
+                // use a random stub from the stub array to calculate footprint 
                 DecimalFormat df = new DecimalFormat("#.##"); 
                 Random r = new Random();
                 int low = 0;
                 int high = 8;
                 int random = r.nextInt(high-low) + low;
-		
-		// calculate the footprint
-                double footprint = Double.valueOf(df.format(footPrint(stubss.get(random), A[0][0], A[l-1][l-1])));
+                double footprint = Double.valueOf(df.format(footPrint(stubss.get(random), a[0][0], a[N-1][N-1])));
                 
-                 // Get execution time and number of needed servers
-                int number_of_calls = (int) Math.pow(l, 2);
+                // Get execution time and number of needed servers
+                int number_of_calls = (int) Math.pow(N, 2);
                 double execution_time = number_of_calls*footprint;
-		
-		// Calculate no. of servers
-                double number_of_server_needed = execution_time/10;
+                double number_of_server_needed = execution_time/deadline;
 
+
+                // if less than one server needed provide one server
+                if (number_of_server_needed < 1.00 ) number_of_server_needed = 1.00;
+                // if more than one but less than 2 server needed use 2 servers
+                if(number_of_server_needed <2.00 && number_of_server_needed > 1.00) number_of_server_needed = 2.00;
                 
-                System.out.println("Estimated number of servers: " + number_of_server_needed);
-               
-                if((number_of_server_needed > 7) ){
+                System.out.println("Number of server needed: " + number_of_server_needed);
+                System.out.println("=====================================");
+                System.out.println("Footprint: " + footprint + " seconds");
+                System.out.println("=====================================");
+                
+                
+
+                if((number_of_server_needed > 8) ){
+                        // If more than 8 servers needed to the operation to 8 servers and if the deadline is unrealistick provide 
+                        // appropriate mesage and quit 
                         number_of_server_needed = 8;
-                        
+                        if(deadline <= 50){
+                                System.out.println("Footprint: " + footprint + "\nFootprint x number of calls: " + (footprint*number_of_calls));
+                                System.out.println("The load exceeds the deadline, multiplication cannot be done!");
+                                return;
+                        }
                 }
 
                 int number_of_servers_in_use = (int) Math.round(number_of_server_needed);
                 System.out.println("Number of used servers: " + number_of_servers_in_use);
-		System.out.println("Footprint is: " + footprint + " seconds");
-       
-                int C[][] = new int[l][l];
+                System.out.println("=====================================\n");
+                int c[][] = new int[N][N];
 
-		// Start the matrix calculation and print the result onto client 
-                for (int i = 0; i < l; i++) {
-                        for (int j = 0; j < l; j++) {
-                            for (int k = 0; k < l; k++) {
+                // Start the matrix calculation and print the result onto client 
+                for (int i = 0; i < N; i++) { // row
+                        for (int j = 0; j < N; j++) { // col
+                            for (int k = 0; k < N; k++) {
                                 
-                                MatrixReply temp=stubss.get(stubs_index).multiplyBlock(MatrixRequest.newBuilder().setA00(A[i][k]).setB00(B[k][j]).build());
-                                if(stubs_index == number_of_servers_in_use-1) 
-					stubs_index = 0;
-                                else 
-					stubs_index++;
-				    
-                                MatrixReply temp2=stubss.get(stubs_index).addBlock(MatrixRequest.newBuilder().setA00(C[i][j]).setB00(temp.getC00()).build());
-                                C[i][j] = temp2.getC00();
-                                if(stubs_index == number_of_servers_in_use-1) 
-					stubs_index = 0;
-                                else 
-					stubs_index++;
+                                MatrixReply temp=stubss.get(stubs_index).multiplyBlock(MatrixRequest.newBuilder().setA(a[i][k]).setB(b[k][j]).build());
+                                if(stubs_index == number_of_servers_in_use-1) stubs_index = 0;
+                                else stubs_index++;
+                                MatrixReply temp2=stubss.get(stubs_index).addBlock(MatrixRequest.newBuilder().setA(c[i][j]).setB(temp.getC()).build());
+                                c[i][j] = temp2.getC();
+                                if(stubs_index == number_of_servers_in_use-1) stubs_index = 0;
+                                else stubs_index++;
                             }
                         }
                     }
-		
 
                     // Print result matrix
-		String s="[  ";
-		for (int i = 0; i < A.length; i++) {
-                        for (int j = 0; j < A[0].length; j++) {
-                            System.out.print(C[i][j] + " ");
-			    s= s+ " "+ C[i][j];
+                    for (int i = 0; i < a.length; i++) {
+                        for (int j = 0; j < a[0].length; j++) {
+                            System.out.print(c[i][j] + " ");
                         }
                         System.out.println("");
-			s=s+ "     ,     " ;
                     }
-		s=s+ "  ]" ;
-		
-		redirectAttributes.addFlashAttribute("resultMult",
-						"Multiplication result is:" +" "+ s +" !!");
-//                 // Close channels
+                // Close channels
                 channel1.shutdown();
                 channel2.shutdown();
                 channel3.shutdown();
@@ -278,6 +276,100 @@ public class FileUploadController {
                 channel6.shutdown();
                 channel7.shutdown();
                 channel8.shutdown();
+                
+		
+// 		ArrayList<MatrixServiceGrpc.MatrixServiceBlockingStub> stubss = new ArrayList<MatrixServiceGrpc.MatrixServiceBlockingStub>();
+//                 stubss.add(stub1);
+//                 stubss.add(stub2);
+//                 stubss.add(stub3);
+//                 stubss.add(stub4);
+//                 stubss.add(stub5);
+//                 stubss.add(stub6);
+//                 stubss.add(stub7);
+//                 stubss.add(stub8);
+		
+// 		int stubs_index = 0;
+// 		int deadline=10;
+
+// //                 // Length row
+//                 int l = A.length;
+
+// //                 // use a random stub from the stub array to calculate footprint 
+//                 DecimalFormat df = new DecimalFormat("#.##"); 
+//                 Random r = new Random();
+//                 int low = 0;
+//                 int high = 8;
+//                 int random = r.nextInt(high-low) + low;
+		
+// 		// calculate the footprint
+//                 double footprint = Double.valueOf(df.format(footPrint(stubss.get(random), A[0][0], A[l-1][l-1])));
+                
+//                  // Get execution time and number of needed servers
+//                 int number_of_calls = (int) Math.pow(l, 2);
+//                 double execution_time = number_of_calls*footprint;
+		
+// 		// Calculate no. of servers
+//                 double number_of_server_needed = execution_time/10;
+
+                
+//                 System.out.println("Estimated number of servers: " + number_of_server_needed);
+               
+//                 if((number_of_server_needed > 7) ){
+//                         number_of_server_needed = 8;
+                        
+//                 }
+
+//                 int number_of_servers_in_use = (int) Math.round(number_of_server_needed);
+//                 System.out.println("Number of used servers: " + number_of_servers_in_use);
+// 		System.out.println("Footprint is: " + footprint + " seconds");
+       
+//                 int C[][] = new int[l][l];
+
+// 		// Start the matrix calculation and print the result onto client 
+//                 for (int i = 0; i < l; i++) {
+//                         for (int j = 0; j < l; j++) {
+//                             for (int k = 0; k < l; k++) {
+                                
+//                                 MatrixReply temp=stubss.get(stubs_index).multiplyBlock(MatrixRequest.newBuilder().setA00(A[i][k]).setB00(B[k][j]).build());
+//                                 if(stubs_index == number_of_servers_in_use-1) 
+// 					stubs_index = 0;
+//                                 else 
+// 					stubs_index++;
+				    
+//                                 MatrixReply temp2=stubss.get(stubs_index).addBlock(MatrixRequest.newBuilder().setA00(C[i][j]).setB00(temp.getC00()).build());
+//                                 C[i][j] = temp2.getC00();
+//                                 if(stubs_index == number_of_servers_in_use-1) 
+// 					stubs_index = 0;
+//                                 else 
+// 					stubs_index++;
+//                             }
+//                         }
+//                     }
+		
+
+//                     // Print result matrix
+// 		String s="[  ";
+// 		for (int i = 0; i < A.length; i++) {
+//                         for (int j = 0; j < A[0].length; j++) {
+//                             System.out.print(C[i][j] + " ");
+// 			    s= s+ " "+ C[i][j];
+//                         }
+//                         System.out.println("");
+// 			s=s+ "     ,     " ;
+//                     }
+// 		s=s+ "  ]" ;
+		
+// 		redirectAttributes.addFlashAttribute("resultMult",
+// 						"Multiplication result is:" +" "+ s +" !!");
+// //                 // Close channels
+//                 channel1.shutdown();
+//                 channel2.shutdown();
+//                 channel3.shutdown();
+//                 channel4.shutdown();
+//                 channel5.shutdown();
+//                 channel6.shutdown();
+//                 channel7.shutdown();
+//                 channel8.shutdown();
                 
 	}
 	
