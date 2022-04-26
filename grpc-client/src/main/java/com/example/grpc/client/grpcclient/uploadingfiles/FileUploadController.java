@@ -201,7 +201,8 @@ public class FileUploadController {
 
                 // Length row
                 int N = a.length;
-
+		int deadline=10;
+		
                 // use a random stub from the stub array to calculate footprint 
                 DecimalFormat df = new DecimalFormat("#.##"); 
                 Random r = new Random();
