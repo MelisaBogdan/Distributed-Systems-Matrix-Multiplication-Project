@@ -163,7 +163,7 @@ public class FileUploadController {
 		return true;
 	}
 	
-	public void grpcClient(int[][]A, int[][]B, RedirectAttributes redirectAttributes){
+	public void grpcClient(int[][]a, int[][]b, RedirectAttributes redirectAttributes){
 
 		// Deadline based scaling
 		
