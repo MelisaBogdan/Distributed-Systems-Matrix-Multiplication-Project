@@ -280,7 +280,7 @@ public class FileUploadController {
                     }
 		s=s+ "  ]" ;
 		
-		redirectAttributes.addFlashAttribute("resultMult",
+		redirectAttributes.addFlashAttribute("message",
 						"Multiplication result is:" +" "+ s +" !!");
                 // Close channels
                 channel1.shutdown();
